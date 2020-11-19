@@ -7,6 +7,7 @@ import MyListScreen from "../my-list-screen/my-list-screen";
 import MovieScreen from "../movie-screen/movie-screen";
 import AddReviewScreen from "../add-review-screen/add-review-screen";
 import PlayerScreen from "../player-screen/player-screen";
+import {PromoTypes} from "../../prop-types/prop-types";
 
 const App = (props) => {
   const {promoFilm, films, reviews} = props;
@@ -27,7 +28,7 @@ const App = (props) => {
         <Route exact path="/mylist">
           <MyListScreen films={films} />
         </Route>
-        <Route exact path="/films" render={({history}) => (
+        <Route exact path="/films/:id" render={({history}) => (
           <MovieScreen
             films={films}
             film={promoFilm}
@@ -35,7 +36,7 @@ const App = (props) => {
             onPlayButtonClick={(id) => history.push(`/player/` + id)}
           />
         )} />
-        <Route exact path="/review">
+        <Route exact path="/films/:id/review">
           <AddReviewScreen film={promoFilm} />
         </Route>
         <Route exact path="/player/:id">
@@ -47,7 +48,7 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  promoFilm: PropTypes.object.isRequired,
+  promoFilm: PromoTypes.isRequired,
   films: PropTypes.array.isRequired,
   reviews: PropTypes.array.isRequired,
 };

@@ -1,9 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import MovieList from "../movie-list/movie-list";
+import {PromoTypes} from "../../prop-types/prop-types";
 
 const MainScreen = (props) => {
   const {promoFilm, films, onPlayButtonClick} = props;
+  const {name, posterImage, genre, released} = promoFilm;
 
   return <React.Fragment>
     <section className="movie-card">
@@ -32,14 +34,14 @@ const MainScreen = (props) => {
       <div className="movie-card__wrap">
         <div className="movie-card__info">
           <div className="movie-card__poster">
-            <img src={promoFilm.posterImage} alt={promoFilm.name} width="218" height="327"/>
+            <img src={posterImage} alt={`${name} poster`} width="218" height="327"/>
           </div>
 
           <div className="movie-card__desc">
-            <h2 className="movie-card__title">{promoFilm.name}</h2>
+            <h2 className="movie-card__title">{name}</h2>
             <p className="movie-card__meta">
-              <span className="movie-card__genre">{promoFilm.genre}</span>
-              <span className="movie-card__year">{promoFilm.released}</span>
+              <span className="movie-card__genre">{genre}</span>
+              <span className="movie-card__year">{released}</span>
             </p>
 
             <div className="movie-card__buttons">
@@ -123,7 +125,7 @@ const MainScreen = (props) => {
 };
 
 MainScreen.propTypes = {
-  promoFilm: PropTypes.object.isRequired,
+  promoFilm: PromoTypes.isRequired,
   films: PropTypes.array.isRequired,
   onPlayButtonClick: PropTypes.func.isRequired,
 };

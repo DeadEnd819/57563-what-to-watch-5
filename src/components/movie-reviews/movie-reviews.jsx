@@ -1,5 +1,6 @@
 import React, {Fragment} from "react";
 import PropTypes from "prop-types";
+import {ReviewType} from "../../prop-types/prop-types";
 import ReviewItem from "../review-item/review-item";
 import {getEvenElements, getOddElements} from "../../utils";
 
@@ -27,7 +28,7 @@ const MovieReviews = (props) => {
 };
 
 MovieReviews.propTypes = {
-  reviews: PropTypes.array.isRequired
+  reviews: PropTypes.arrayOf(ReviewType).isRequired,
 };
 
 export default MovieReviews;

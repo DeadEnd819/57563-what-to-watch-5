@@ -1,6 +1,6 @@
 import React, {Fragment} from "react";
 import moment from "moment";
-import PropTypes from "prop-types";
+import {ReviewType} from "../../prop-types/prop-types";
 
 const ReviewItem = (props) => {
   const {review} = props;
@@ -24,7 +24,7 @@ const ReviewItem = (props) => {
 };
 
 ReviewItem.propTypes = {
-  review: PropTypes.object.isRequired
+  review: ReviewType.isRequired
 };
 
 export default ReviewItem;
