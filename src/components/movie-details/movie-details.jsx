@@ -7,7 +7,7 @@ const MovieDetails = (props) => {
   const {film} = props;
   const {director, starring, runTime, genre, released} = film;
 
-  return <Fragment>
+  return (
     <div className="movie-card__text movie-card__row">
       <div className="movie-card__text-col">
         <p className="movie-card__details-item">
@@ -37,7 +37,7 @@ const MovieDetails = (props) => {
         </p>
       </div>
     </div>
-  </Fragment>;
+  );
 };
 
 MovieDetails.propTypes = {

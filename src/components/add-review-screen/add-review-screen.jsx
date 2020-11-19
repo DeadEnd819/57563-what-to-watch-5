@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 const AddReviewScreen = (props) => {
   const {film} = props;
 
-  return <React.Fragment>
+  return (
     <section className="movie-card movie-card--full">
       <div className="movie-card__header">
         <div className="movie-card__bg">
@@ -52,7 +52,7 @@ const AddReviewScreen = (props) => {
       </div>
 
     </section>
-  </React.Fragment>;
+  );
 };
 
 AddReviewScreen.propTypes = {

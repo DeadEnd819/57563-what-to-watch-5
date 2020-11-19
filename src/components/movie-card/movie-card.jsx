@@ -7,7 +7,7 @@ const MovieCard = (props) => {
   const {film, onMovieCardOver, onMovieCardOut} = props;
   const {id, name, previewImage} = film;
 
-  return <React.Fragment>
+  return (
     <article className="small-movie-card catalog__movies-card" onMouseEnter={() => onMovieCardOver(id)} onMouseLeave={() => onMovieCardOut()}>
       <div className="small-movie-card__image">
         <img src={previewImage} alt={name} width="280" height="175"/>
@@ -16,7 +16,7 @@ const MovieCard = (props) => {
         <Link to={`/films/${id}`} className="small-movie-card__link">{name}</Link>
       </h3>
     </article>
-  </React.Fragment>;
+  );
 };
 
 MovieCard.propTypes = {
@@ -26,4 +26,3 @@ MovieCard.propTypes = {
 };
 
 export default MovieCard;
-

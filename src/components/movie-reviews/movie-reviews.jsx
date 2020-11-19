@@ -1,4 +1,4 @@
-import React, {Fragment} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import {ReviewType} from "../../prop-types/prop-types";
 import ReviewItem from "../review-item/review-item";
@@ -10,7 +10,7 @@ const MovieReviews = (props) => {
   const evenReviews = getEvenElements(reviews);
   const oddReviews = getOddElements(reviews);
 
-  return <Fragment>
+  return (
     <div className="movie-card__reviews movie-card__row">
       <div className="movie-card__reviews-col">
         {evenReviews.map((review, i) =>
@@ -24,7 +24,7 @@ const MovieReviews = (props) => {
         )}
       </div>
     </div>
-  </Fragment>;
+  );
 };
 
 MovieReviews.propTypes = {

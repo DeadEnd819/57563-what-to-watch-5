@@ -2,9 +2,7 @@ import React, {Fragment, PureComponent} from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 import MovieList from "../movie-list/movie-list";
-import MovieOverview from "../movie-overview/movie-overview";
-import MovieDetails from "../movie-details/movie-details";
-import MovieReviews from "../movie-reviews/movie-reviews";
+import Tabs from "../tabs/tabs";
 import {FilmScreenType} from "../../prop-types/prop-types";
 import {capitalizeFirstLetter} from "../../utils";
 import {MORE_MOVIE_COUNT, MovieNavigationButtons} from "../../const";
@@ -34,20 +32,6 @@ class MovieScreen extends PureComponent {
     const {films, film, reviews, onPlayButtonClick} = this.props;
     const {id, name, posterImage, backgroundImage, genre, released} = film;
     const MORE_MOVIE = films.slice(0, MORE_MOVIE_COUNT);
-
-    let movieComponent;
-
-    switch (this.state.activeNavigationButton) {
-      case MovieNavigationButtons.DETAILS:
-        movieComponent = <MovieDetails film={film} />;
-        break;
-      case MovieNavigationButtons.REVIEWS:
-        movieComponent = <MovieReviews reviews={reviews} />;
-        break;
-      default:
-        movieComponent = <MovieOverview film={film} />;
-        break;
-    }
 
     return <Fragment>
       <section className="movie-card movie-card--full">
@@ -118,7 +102,7 @@ class MovieScreen extends PureComponent {
                 </ul>
               </nav>
 
-              {movieComponent}
+              <Tabs activeTab={this.state.activeNavigationButton} film={film} reviews={reviews} />
 
             </div>
           </div>
