@@ -5,33 +5,38 @@ import MainScreen from "../main-screen/main-screen";
 import AuthScreen from "../auth-screen/auth-screen";
 import MyListScreen from "../my-list-screen/my-list-screen";
 import MovieScreen from "../movie-screen/movie-screen";
-import MovieReviewScreen from "../movie-review-screen/movie-review-screen";
+import AddReviewScreen from "../add-review-screen/add-review-screen";
 import PlayerScreen from "../player-screen/player-screen";
 
 const App = (props) => {
-  const {title, genre, date} = props;
+  const {promoFilm, films, reviews} = props;
 
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/">
+        <Route exact path="/" render={({history}) => (
           <MainScreen
-            title={title}
-            genre={genre}
-            date={date}
+            promoFilm={promoFilm}
+            films={films}
+            onPlayButtonClick={(id) => history.push(`/player/` + id)}
           />
-        </Route>
+        )} />
         <Route exact path="/login">
           <AuthScreen />
         </Route>
         <Route exact path="/mylist">
-          <MyListScreen />
+          <MyListScreen films={films} />
         </Route>
-        <Route exact path="/films/:id">
-          <MovieScreen />
-        </Route>
-        <Route exact path="/films/:id/review">
-          <MovieReviewScreen />
+        <Route exact path="/films" render={({history}) => (
+          <MovieScreen
+            films={films}
+            film={promoFilm}
+            reviews={reviews}
+            onPlayButtonClick={(id) => history.push(`/player/` + id)}
+          />
+        )} />
+        <Route exact path="/review">
+          <AddReviewScreen film={promoFilm} />
         </Route>
         <Route exact path="/player/:id">
           <PlayerScreen />
@@ -42,9 +47,9 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  title: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
+  promoFilm: PropTypes.object.isRequired,
+  films: PropTypes.array.isRequired,
+  reviews: PropTypes.array.isRequired,
 };
 
 export default App;
