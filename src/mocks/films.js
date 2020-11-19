@@ -1,4 +1,3 @@
-import Reviews from "./reviews";
 import {TRAILER_URL} from "../const";
 
 export default [
@@ -21,7 +20,6 @@ export default [
     genre: `Comedy`,
     released: 2014,
     isFavorite: false,
-    reviews: Reviews
   },
   {
     id: 2,
@@ -41,7 +39,6 @@ export default [
     genre: `Biography`,
     released: 2004,
     isFavorite: false,
-    reviews: Reviews
   },
   {
     id: 3,
@@ -61,7 +58,6 @@ export default [
     genre: `Music`,
     released: 2018,
     isFavorite: false,
-    reviews: Reviews
   },
   {
     id: 4,
@@ -81,7 +77,6 @@ export default [
     genre: `Action`,
     released: 2015,
     isFavorite: false,
-    reviews: Reviews
   },
   {
     id: 5,
@@ -101,7 +96,6 @@ export default [
     genre: `Crime`,
     released: 1994,
     isFavorite: false,
-    reviews: Reviews
   },
   {
     id: 6,
@@ -121,7 +115,6 @@ export default [
     genre: `Crime`,
     released: 2017,
     isFavorite: false,
-    reviews: Reviews
   },
   {
     id: 7,
@@ -141,7 +134,6 @@ export default [
     genre: `Adventure`,
     released: 2014,
     isFavorite: false,
-    reviews: Reviews
   },
   {
     id: 8,
@@ -161,6 +153,5 @@ export default [
     genre: `Adventure`,
     released: 1997,
     isFavorite: false,
-    reviews: Reviews
   },
 ];
