@@ -1,39 +1,21 @@
-import React, {PureComponent} from "react";
-import FilmCard from "../movie-card/movie-card";
+import React from "react";
 import PropTypes from "prop-types";
+import FilmCard from "../movie-card/movie-card";
+import withVideoPlayer from "../../hocs/with-video-player";
 
-class MovieList extends PureComponent {
-  constructor(props) {
-    super(props);
+const FilmCardWrapped = withVideoPlayer(FilmCard);
 
-    this.state = {
-      activeCard: null,
-    };
+const MovieList = (props) => {
+  const {films} = props;
 
-    this._handleCardOver = this._handleCardOver.bind(this);
-    this._handleCardOut = this._handleCardOut.bind(this);
-  }
-
-  _handleCardOver(id) {
-    this.setState({activeCard: id});
-  }
-
-  _handleCardOut() {
-    this.setState({activeCard: null});
-  }
-
-  render() {
-    const {films} = this.props;
-
-    return (
-      <div className="catalog__movies-list">
-        {films.map((film) =>
-          <FilmCard key={film.id} film={film} onMovieCardOver ={this._handleCardOver} onMovieCardOut={this._handleCardOut}/>
-        )}
-      </div>
-    );
-  }
-}
+  return (
+    <div className="catalog__movies-list">
+      {films.map((film) =>
+        <FilmCardWrapped key={film.id} film={film} />
+      )}
+    </div>
+  );
+};
 
 MovieList.propTypes = {
   films: PropTypes.array.isRequired,
