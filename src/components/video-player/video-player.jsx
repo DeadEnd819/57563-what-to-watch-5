@@ -1,7 +1,6 @@
 import React, {PureComponent, createRef} from "react";
 import PropTypes from "prop-types";
-
-const VIDEO_TIME_OUT = 1000;
+import {VIDEO_TIME_OUT} from "../../const";
 
 class VideoPlayer extends PureComponent {
   constructor(props) {

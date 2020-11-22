@@ -3,6 +3,7 @@ export const RATINGS_MOVIE = [`1`, `2`, `3`, `4`, `5`];
 export const MORE_MOVIE_COUNT = 4;
 export const MIN_STARRING_COUNT = 0;
 export const MAX_STARRING_COUNT = 4;
+export const VIDEO_TIME_OUT = 1000;
 
 export const MovieNavigationButtons = {
   OVERVIEW: `overview`,
