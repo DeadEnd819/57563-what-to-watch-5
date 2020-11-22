@@ -46,7 +46,7 @@ class VideoPlayer extends PureComponent {
       return;
     }
 
-    if (this.props.activePlay || this.state.isLoading) {
+    if (this.props.activePlay) {
       this._timeout = setTimeout(video.play(), VIDEO_TIME_OUT);
     } else {
       clearTimeout(this._timeout);

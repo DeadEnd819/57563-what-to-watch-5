@@ -28,7 +28,7 @@ const App = (props) => {
         <Route exact path="/mylist">
           <MyListScreen films={films} />
         </Route>
-        <Route exact path="/films" render={({history}) => (
+        <Route exact path="/films/:id" render={({history}) => (
           <MovieScreen
             films={films}
             film={promoFilm}
@@ -36,10 +36,10 @@ const App = (props) => {
             onPlayButtonClick={(id) => history.push(`/player/` + id)}
           />
         )} />
-        <Route exact path="review">
+        <Route exact path="/films/:id/review">
           <AddReviewScreen film={promoFilm} />
         </Route>
-        <Route exact path="/player">
+        <Route exact path="/player/:id">
           <PlayerScreen />
         </Route>
       </Switch>
