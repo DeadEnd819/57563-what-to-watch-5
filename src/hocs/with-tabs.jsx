@@ -10,10 +10,10 @@ const withTabs = (Component) => {
         activeTab: TabNames.OVERVIEW,
       };
 
-      this._onTabClick = this._onTabClick.bind(this);
+      this._handleTabClick = this._handleTabClick.bind(this);
     }
 
-    _onTabClick(evt) {
+    _handleTabClick(evt) {
       evt.preventDefault();
 
       if (!evt.target.id) {
@@ -24,7 +24,7 @@ const withTabs = (Component) => {
     }
 
     render() {
-      return <Component {...this.props} activeTab={this.state.activeTab} onTabClick={this._onTabClick} />;
+      return <Component {...this.props} activeTab={this.state.activeTab} onTabClick={this._handleTabClick} />;
     }
   }
 

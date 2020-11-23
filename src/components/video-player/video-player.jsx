@@ -28,17 +28,6 @@ class VideoPlayer extends PureComponent {
     video.oncanplaythrough = null;
   }
 
-  render() {
-    const {previewVideoLink, poster, onMovieCardOver, onMovieCardOut} = this.props;
-
-    return (
-      <div className="small-movie-card__image" onMouseOver={() => onMovieCardOver()} onMouseOut={() => onMovieCardOut()}>
-        <video ref={this._videoRef} autoPlay={false} poster={poster} src={previewVideoLink} width="280" height="175" muted>
-        </video>
-      </div>
-    );
-  }
-
   componentDidUpdate(prevProps) {
     const video = this._videoRef.current;
     if (prevProps.activePlay === this.props.activePlay) {
@@ -51,6 +40,17 @@ class VideoPlayer extends PureComponent {
       clearTimeout(this._timeout);
       video.load();
     }
+  }
+
+  render() {
+    const {previewVideoLink, poster, onMovieCardOver, onMovieCardOut} = this.props;
+
+    return (
+      <div className="small-movie-card__image" onMouseOver={onMovieCardOver} onMouseOut={onMovieCardOut}>
+        <video ref={this._videoRef} autoPlay={false} poster={poster} src={previewVideoLink} width="280" height="175" muted>
+        </video>
+      </div>
+    );
   }
 }
 
