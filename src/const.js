@@ -1,4 +1,7 @@
-export const TRAILER_URL = `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`;
+export const MocksUrl = {
+  TRAILER_URL: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+  TRAILER_URL_TWO: ` https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+};
 export const RATINGS_MOVIE = [`1`, `2`, `3`, `4`, `5`];
 export const MORE_MOVIE_COUNT = 4;
 export const SHOW_MOVIE_COUNT = 8;
