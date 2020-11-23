@@ -8,6 +8,7 @@ import MovieScreen from "../movie-screen/movie-screen";
 import AddReviewScreen from "../add-review-screen/add-review-screen";
 import PlayerScreen from "../player-screen/player-screen";
 import {PromoTypes} from "../../prop-types/prop-types";
+import {getGenresList, getFavoriteFilms} from "../../utils";
 
 const App = (props) => {
   const {promoFilm, films, reviews} = props;
@@ -19,6 +20,7 @@ const App = (props) => {
           <MainScreen
             promoFilm={promoFilm}
             films={films}
+            genresList={getGenresList(films)}
             onPlayButtonClick={(id) => history.push(`/player/` + id)}
           />
         )} />
@@ -26,7 +28,7 @@ const App = (props) => {
           <AuthScreen />
         </Route>
         <Route exact path="/mylist">
-          <MyListScreen films={films} />
+          <MyListScreen films={getFavoriteFilms(films)} />
         </Route>
         <Route exact path="/films/:id" render={({history}) => (
           <MovieScreen

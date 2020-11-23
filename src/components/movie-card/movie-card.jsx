@@ -9,10 +9,12 @@ const MovieCard = (props) => {
 
   return (
     <article className="small-movie-card catalog__movies-card">
-      {renderPlayer(previewVideoLink, previewImage)}
-      <h3 className="small-movie-card__title">
-        <Link to={`/films/${id}`} className="small-movie-card__link">{name}</Link>
-      </h3>
+      <Link to={`/films/${id}`} className="small-movie-card__link">
+        {renderPlayer(previewVideoLink, previewImage)}
+        <h3 className="small-movie-card__title">
+          <span className="small-movie-card__link">{name}</span>
+        </h3>
+      </Link>
     </article>
   );
 };

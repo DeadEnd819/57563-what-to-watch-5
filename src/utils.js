@@ -1,6 +1,6 @@
-import {ratingOptions} from "./const";
+import {MAX_GENRES_COUNT, RatingOptions, GenresNames} from "./const";
 
-const {BAD, NORMAL, GOOD, VERY_GOOD, AWESOME} = ratingOptions;
+const {BAD, NORMAL, GOOD, VERY_GOOD, AWESOME} = RatingOptions;
 
 export const getRatingQuality = (rating) => {
   switch (true) {
@@ -27,4 +27,16 @@ export const getEvenElements = (elements) => {
 
 export const getOddElements = (elements) => {
   return elements.filter((review, i) => i % 2 !== 0);
+};
+
+export const getFilmsByGenre = (films, genre) =>
+  (genre === GenresNames.ALL_GENRES) ? films.slice() : films.slice().filter((film)=>film.genre === genre);
+
+export const getGenresList = (films) => {
+  const uniqueGenres = Array.from(new Set(films.map((film) => film.genre))).sort().slice(0, MAX_GENRES_COUNT);
+  return [GenresNames.ALL_GENRES, ...uniqueGenres];
+};
+
+export const getFavoriteFilms = (films) => {
+  return films.filter((film) => film.isFavorite);
 };

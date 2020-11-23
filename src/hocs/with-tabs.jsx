@@ -1,5 +1,5 @@
 import React, {PureComponent} from 'react';
-import {MovieNavigationButtons} from "../const";
+import {TabNames} from "../const";
 
 const withTabs = (Component) => {
   class WithTabs extends PureComponent {
@@ -7,13 +7,13 @@ const withTabs = (Component) => {
       super(props);
 
       this.state = {
-        activeTab: MovieNavigationButtons.OVERVIEW
+        activeTab: TabNames.OVERVIEW,
       };
 
-      this._onNavigationButtonClick = this._onNavigationButtonClick.bind(this);
+      this._onTabClick = this._onTabClick.bind(this);
     }
 
-    _onNavigationButtonClick(evt) {
+    _onTabClick(evt) {
       evt.preventDefault();
 
       if (!evt.target.id) {
@@ -24,7 +24,7 @@ const withTabs = (Component) => {
     }
 
     render() {
-      return <Component {...this.props} activeTab={this.state.activeTab} onNavigationButtonClick={this._onNavigationButtonClick} />;
+      return <Component {...this.props} activeTab={this.state.activeTab} onTabClick={this._onTabClick} />;
     }
   }
 

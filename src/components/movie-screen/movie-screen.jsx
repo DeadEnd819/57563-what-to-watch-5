@@ -13,7 +13,6 @@ const TabsWrapped = withTabs(Tabs);
 const MovieScreen = (props) => {
   const {films, film, reviews, onPlayButtonClick} = props;
   const {id, name, posterImage, backgroundImage, genre, released} = film;
-  const MORE_MOVIE = films.slice(0, MORE_MOVIE_COUNT);
 
   return <Fragment>
     <section className="movie-card movie-card--full">
@@ -72,7 +71,7 @@ const MovieScreen = (props) => {
       <section className="catalog catalog--like-this">
         <h2 className="catalog__title">More like this</h2>
 
-        <MovieList films={MORE_MOVIE} />
+        <MovieList films={films} showCount={MORE_MOVIE_COUNT} />
 
       </section>
 
