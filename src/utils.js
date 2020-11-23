@@ -40,3 +40,7 @@ export const getGenresList = (films) => {
 export const getFavoriteFilms = (films) => {
   return films.filter((film) => film.isFavorite);
 };
+
+export const extend = (a, b) => {
+  return Object.assign({}, a, b);
+};

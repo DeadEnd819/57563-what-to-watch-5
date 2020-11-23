@@ -1,14 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Header from "../header/header";
-import withCatalog from "../../hocs/with-catalog";
 import MovieCatalog from "../movie-catalog/movie-catalog";
 import {PromoTypes} from "../../prop-types/prop-types";
 
-const CatalogWrapped = withCatalog(MovieCatalog);
-
 const MainScreen = (props) => {
-  const {promoFilm, films, genresList, onPlayButtonClick} = props;
+  const {promoFilm, genresList, onPlayButtonClick} = props;
   const {name, posterImage, genre, released} = promoFilm;
 
   return <React.Fragment>
@@ -55,7 +52,7 @@ const MainScreen = (props) => {
 
     <div className="page-content">
 
-      <CatalogWrapped films={films} genresList={genresList} />
+      <MovieCatalog genresList={genresList} />
 
       <footer className="page-footer">
         <div className="logo">
@@ -76,7 +73,6 @@ const MainScreen = (props) => {
 
 MainScreen.propTypes = {
   promoFilm: PromoTypes.isRequired,
-  films: PropTypes.array.isRequired,
   genresList: PropTypes.array.isRequired,
   onPlayButtonClick: PropTypes.func.isRequired,
 };

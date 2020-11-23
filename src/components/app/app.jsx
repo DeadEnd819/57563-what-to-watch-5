@@ -19,7 +19,6 @@ const App = (props) => {
         <Route exact path="/" render={({history}) => (
           <MainScreen
             promoFilm={promoFilm}
-            films={films}
             genresList={getGenresList(films)}
             onPlayButtonClick={(id) => history.push(`/player/` + id)}
           />
