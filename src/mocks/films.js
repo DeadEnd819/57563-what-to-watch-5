@@ -399,7 +399,7 @@ export default [
     director: `Quentin Tarantino`,
     starring: [`John Travolta`, `Uma Thurman`, `Samuel L. Jackson`],
     runTime: 154,
-    genre: `Crime`,
+    genre: `Arthouse`,
     released: 1994,
     isFavorite: false,
   },
