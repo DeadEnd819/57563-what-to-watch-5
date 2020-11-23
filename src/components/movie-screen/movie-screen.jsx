@@ -7,12 +7,14 @@ import Tabs from "../tabs/tabs";
 import withTabs from "../../hocs/with-tabs";
 import {FilmScreenType} from "../../prop-types/prop-types";
 import {MORE_MOVIE_COUNT} from "../../const";
+import {getFilmsByGenre} from "../../utils";
 
 const TabsWrapped = withTabs(Tabs);
 
 const MovieScreen = (props) => {
   const {films, film, reviews, onPlayButtonClick} = props;
   const {id, name, posterImage, backgroundImage, genre, released} = film;
+  const similarFilm = getFilmsByGenre(films, genre);
 
   return <Fragment>
     <section className="movie-card movie-card--full">
@@ -71,7 +73,7 @@ const MovieScreen = (props) => {
       <section className="catalog catalog--like-this">
         <h2 className="catalog__title">More like this</h2>
 
-        <MovieList films={films} showCount={MORE_MOVIE_COUNT} />
+        <MovieList films={similarFilm} showCount={MORE_MOVIE_COUNT} />
 
       </section>
 
