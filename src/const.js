@@ -41,3 +41,11 @@ export const GenresNames = {
   SCI_FI: `Sci-Fi`,
   THRILLER: `Thrillers`,
 };
+
+export const MovieDetailsName = {
+  DIRECTOR: `Director`,
+  STARRING: `Starring`,
+  RUN_TIME: `Run Time`,
+  GENRE: `Genre`,
+  RELEASED: `Released`,
+};
