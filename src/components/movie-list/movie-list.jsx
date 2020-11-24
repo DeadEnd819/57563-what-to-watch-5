@@ -5,8 +5,7 @@ import withVideoPlayer from "../../hocs/with-video-player";
 
 const FilmCardWrapped = withVideoPlayer(FilmCard);
 
-const MovieList = (props) => {
-  const {films, showCount} = props;
+const MovieList = ({films, showCount}) => {
   const filmsShowCount = films.length > showCount ? showCount : films.length;
 
   return (

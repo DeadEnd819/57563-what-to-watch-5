@@ -1,7 +1,7 @@
-import React from "react";
+import React, {Fragment} from "react";
 
 const PlayerScreen = () => {
-  return <React.Fragment>
+  return <Fragment>
     <div className="player">
       <video src="#" className="player__video" poster="img/player-poster.jpg"></video>
 
@@ -34,7 +34,7 @@ const PlayerScreen = () => {
         </div>
       </div>
     </div>
-  </React.Fragment>;
+  </Fragment>;
 };
 
 export default PlayerScreen;

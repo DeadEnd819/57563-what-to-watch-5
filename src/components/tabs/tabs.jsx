@@ -3,13 +3,11 @@ import PropTypes from "prop-types";
 import MovieOverview from "../movie-overview/movie-overview";
 import MovieDetails from "../movie-details/movie-details";
 import MovieReviews from "../movie-reviews/movie-reviews";
+import TabsItem from "../tabs-item/tabs-item";
 import {TabNames} from "../../const";
 import {FilmScreenType} from "../../prop-types/prop-types";
-import {capitalizeFirstLetter} from "../../utils";
 
-const Tabs = (props) => {
-  const {film, reviews, activeTab, onTabClick} = props;
-
+const Tabs = ({film, reviews, activeTab, onTabClick}) => {
   const getTabComponent = () => {
     switch (activeTab) {
       case TabNames.DETAILS:
@@ -26,9 +24,7 @@ const Tabs = (props) => {
       <nav className="movie-nav movie-card__nav">
         <ul className="movie-nav__list" onClick={onTabClick}>
           {Object.values(TabNames).map((tab, i) =>
-            <li className={`movie-nav__item${activeTab === tab ? ` movie-nav__item--active` : ``}`} key={`${i}-${tab}`}>
-              <a href="#" className="movie-nav__link" id={tab}>{capitalizeFirstLetter(tab)}</a>
-            </li>
+            <TabsItem key={`${i}-${tab}`} tab={tab} activeTab={activeTab} />
           )}
         </ul>
       </nav>

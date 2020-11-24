@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react';
+import {DEFAULT_MOVIE_RATING} from "../const";
 
 const withAddReviewForm = (Component) => {
   class WithAddReviewForm extends PureComponent {
@@ -6,7 +7,7 @@ const withAddReviewForm = (Component) => {
       super(props);
 
       this.state = {
-        rating: `3`,
+        rating: DEFAULT_MOVIE_RATING,
         text: ``,
       };
 

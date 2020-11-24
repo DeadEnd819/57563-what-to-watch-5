@@ -6,8 +6,7 @@ import PropTypes from "prop-types";
 
 const AddReviewFormWrapped = withAddReviewForm(AddReviewForm);
 
-const AddReviewScreen = (props) => {
-  const {film} = props;
+const AddReviewScreen = ({film}) => {
 
   return (
     <section className="movie-card movie-card--full">

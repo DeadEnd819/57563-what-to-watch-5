@@ -2,8 +2,7 @@ import React, {Fragment} from "react";
 import moment from "moment";
 import {ReviewType} from "../../prop-types/prop-types";
 
-const ReviewItem = (props) => {
-  const {review} = props;
+const ReviewItem = ({review}) => {
   const {name, rating, comment, date} = review;
 
   return <Fragment key={review.id}>

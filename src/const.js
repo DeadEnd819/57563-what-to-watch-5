@@ -9,6 +9,7 @@ export const MIN_STARRING_COUNT = 0;
 export const MAX_STARRING_COUNT = 4;
 export const VIDEO_TIME_OUT = 1000;
 export const MAX_GENRES_COUNT = 9;
+export const DEFAULT_MOVIE_RATING = `3`;
 
 export const ActionType = {
   CHANGE_GENRE: `CHANGE_GENRE`,
