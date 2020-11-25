@@ -4,9 +4,7 @@ import {ReviewType} from "../../prop-types/prop-types";
 import ReviewItem from "../review-item/review-item";
 import {getEvenElements, getOddElements} from "../../utils";
 
-const MovieReviews = (props) => {
-  const {reviews} = props;
-
+const MovieReviews = ({reviews}) => {
   const evenReviews = getEvenElements(reviews);
   const oddReviews = getOddElements(reviews);
 

@@ -6,9 +6,7 @@ import MovieGenresList from "../movie-genres-list/movie-genres-list";
 import ShowMoreButton from "../show-more-button/show-more-button";
 import MovieList from "../movie-list/movie-list";
 
-const MovieCatalog = (props) => {
-  const {genresList, filteredFilms, genre, showFilmsCount, changeGenre, showMoreCards} = props;
-
+const MovieCatalog = ({genresList, filteredFilms, genre, showFilmsCount, changeGenre, showMoreCards}) => {
   return (
     <section className="catalog">
       <h2 className="catalog__title visually-hidden">Catalog</h2>

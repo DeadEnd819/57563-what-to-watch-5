@@ -1,8 +1,8 @@
-import React from "react";
+import React, {Fragment} from "react";
 import {Link} from "react-router-dom";
 
 const AuthScreen = () => {
-  return <React.Fragment>
+  return <Fragment>
     <div className="user-page">
       <header className="page-header user-page__head">
         <div className="logo">
@@ -48,7 +48,7 @@ const AuthScreen = () => {
         </div>
       </footer>
     </div>
-  </React.Fragment>;
+  </Fragment>;
 };
 
 export default AuthScreen;

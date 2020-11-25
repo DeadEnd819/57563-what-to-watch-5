@@ -1,61 +1,18 @@
-import React, {PureComponent, createRef} from "react";
+import React from "react";
 import PropTypes from "prop-types";
-import {VIDEO_TIME_OUT} from "../../const";
 
-class VideoPlayer extends PureComponent {
-  constructor(props) {
-    super(props);
+const VideoPlayer = ({videoRef, previewVideoLink, poster, onMovieCardOver, onMovieCardOut}) => {
 
-    this._videoRef = createRef();
-    this._timeout = null;
-
-    this.state = {
-      isLoading: true,
-    };
-  }
-
-  componentDidMount() {
-    const video = this._videoRef.current;
-
-    video.oncanplaythrough = () => this.setState({
-      isLoading: false,
-    });
-  }
-
-  componentWillUnmount() {
-    const video = this._videoRef.current;
-
-    video.oncanplaythrough = null;
-  }
-
-  componentDidUpdate(prevProps) {
-    const video = this._videoRef.current;
-    if (prevProps.activePlay === this.props.activePlay) {
-      return;
-    }
-
-    if (this.props.activePlay) {
-      this._timeout = setTimeout(video.play(), VIDEO_TIME_OUT);
-    } else {
-      clearTimeout(this._timeout);
-      video.load();
-    }
-  }
-
-  render() {
-    const {previewVideoLink, poster, onMovieCardOver, onMovieCardOut} = this.props;
-
-    return (
-      <div className="small-movie-card__image" onMouseOver={onMovieCardOver} onMouseOut={onMovieCardOut}>
-        <video ref={this._videoRef} autoPlay={false} poster={poster} src={previewVideoLink} width="280" height="175" muted>
-        </video>
-      </div>
-    );
-  }
-}
+  return (
+    <div className="small-movie-card__image" onMouseOver={onMovieCardOver} onMouseOut={onMovieCardOut}>
+      <video ref={videoRef} autoPlay={false} poster={poster} src={previewVideoLink} width="280" height="175" muted>
+      </video>
+    </div>
+  );
+};
 
 VideoPlayer.propTypes = {
-  activePlay: PropTypes.bool.isRequired,
+  videoRef: PropTypes.object.isRequired,
   previewVideoLink: PropTypes.string.isRequired,
   poster: PropTypes.string.isRequired,
   onMovieCardOver: PropTypes.func.isRequired,

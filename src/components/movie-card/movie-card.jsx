@@ -3,8 +3,7 @@ import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 import {FilmCardType} from "../../prop-types/prop-types";
 
-const MovieCard = (props) => {
-  const {film, renderPlayer} = props;
+const MovieCard = ({film, renderPlayer}) => {
   const {id, name, previewImage, previewVideoLink} = film;
 
   return (

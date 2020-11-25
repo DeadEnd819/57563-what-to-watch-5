@@ -4,8 +4,7 @@ import Header from "../header/header";
 import MovieCatalog from "../movie-catalog/movie-catalog";
 import {PromoTypes} from "../../prop-types/prop-types";
 
-const MainScreen = (props) => {
-  const {promoFilm, genresList, onPlayButtonClick} = props;
+const MainScreen = ({promoFilm, genresList, onPlayButtonClick}) => {
   const {name, posterImage, genre, released} = promoFilm;
 
   return <React.Fragment>

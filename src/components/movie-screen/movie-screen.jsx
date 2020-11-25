@@ -11,8 +11,7 @@ import {getFilmsByGenre} from "../../utils";
 
 const TabsWrapped = withTabs(Tabs);
 
-const MovieScreen = (props) => {
-  const {films, film, reviews, onPlayButtonClick} = props;
+const MovieScreen = ({films, film, reviews, onPlayButtonClick}) => {
   const {id, name, posterImage, backgroundImage, genre, released} = film;
   const similarFilm = getFilmsByGenre(films, genre);
 

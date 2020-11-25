@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import MainScreen from "../main-screen/main-screen";
 import AuthScreen from "../auth-screen/auth-screen";
@@ -10,8 +11,7 @@ import PlayerScreen from "../player-screen/player-screen";
 import {PromoTypes} from "../../prop-types/prop-types";
 import {getGenresList, getFavoriteFilms} from "../../utils";
 
-const App = (props) => {
-  const {promoFilm, films, reviews} = props;
+const App = ({promoFilm, films, reviews}) => {
 
   return (
     <BrowserRouter>
@@ -54,4 +54,12 @@ App.propTypes = {
   reviews: PropTypes.array.isRequired,
 };
 
-export default App;
+const mapStateToProps = (state) => ({
+  films: state.films,
+  promoFilm: state.promoFilm,
+  reviews: state.reviews,
+});
+
+export {App};
+export default connect(mapStateToProps)(App);
+

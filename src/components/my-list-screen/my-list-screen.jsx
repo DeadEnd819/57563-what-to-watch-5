@@ -1,12 +1,10 @@
-import React from "react";
+import React, {Fragment} from "react";
 import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
 import MovieList from "../movie-list/movie-list";
 
-const MyListScreen = (props) => {
-  const {films} = props;
-
-  return <React.Fragment>
+const MyListScreen = ({films}) => {
+  return <Fragment>
     <div className="user-page">
       <header className="page-header user-page__head">
         <div className="logo">
@@ -47,7 +45,7 @@ const MyListScreen = (props) => {
         </div>
       </footer>
     </div>
-  </React.Fragment>;
+  </Fragment>;
 };
 
 MyListScreen.propTypes = {

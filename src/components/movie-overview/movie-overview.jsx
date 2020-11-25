@@ -3,8 +3,7 @@ import {FilmScreenType} from "../../prop-types/prop-types";
 import {MIN_STARRING_COUNT, MAX_STARRING_COUNT} from "../../const";
 import {getRatingQuality} from "../../utils";
 
-const MovieOverview = (props) => {
-  const {film} = props;
+const MovieOverview = ({film}) => {
   const {rating, scoresCount, description, director, starring} = film;
 
   return (<React.Fragment>

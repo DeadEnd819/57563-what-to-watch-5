@@ -3,8 +3,7 @@ import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
 import HeaderLogo from "../header-logo/header-logo";
 
-const Header = (props) => {
-  const {isMain} = props;
+const Header = ({isMain}) => {
 
   return (
     <header className="page-header movie-card__head">
