@@ -1,4 +1,4 @@
-import React, {Fragment, useState, useEffect, useCallback, useRef} from "react";
+import React, {useState, useEffect, useCallback, useRef} from "react";
 import PropTypes from "prop-types";
 import {FilmCardType} from "../../prop-types/prop-types";
 import {Link} from "react-router-dom";
@@ -76,36 +76,34 @@ const PlayerScreen = ({id, film, loadDataFilm}) => {
   );
 
   return (
-    <Fragment>
-      <div className="player">
-        <video ref={videoRef} src={videoLink} className="player__video" poster={backgroundImage} />
+    <div className="player">
+      <video ref={videoRef} src={videoLink} className="player__video" poster={backgroundImage} />
 
-        <Link to={`${FILMS}/${id}`} type="button" className="player__exit">Exit</Link>
+      <Link to={`${FILMS}/${id}`} type="button" className="player__exit">Exit</Link>
 
-        <div className="player__controls">
-          <div className="player__controls-row">
-            <div className="player__time">
-              <progress className="player__progress" value={progress} max={duration}>
-              </progress>
-              <div className="player__toggler" style={{left: `${toggleProgress}%`}}>Toggler</div>
-            </div>
-            <div className="player__time-value">{timeLeft}</div>
+      <div className="player__controls">
+        <div className="player__controls-row">
+          <div className="player__time">
+            <progress className="player__progress" value={progress} max={duration}>
+            </progress>
+            <div className="player__toggler" style={{left: `${toggleProgress}%`}}>Toggler</div>
           </div>
+          <div className="player__time-value">{timeLeft}</div>
+        </div>
 
-          <div className="player__controls-row">
-            <PlayerButton isPlaying={isPlaying} onTogglePlayButtonClick={handleTogglePlayButtonClick}/>
-            <div className="player__name">{name}</div>
+        <div className="player__controls-row">
+          <PlayerButton isPlaying={isPlaying} onTogglePlayButtonClick={handleTogglePlayButtonClick}/>
+          <div className="player__name">{name}</div>
 
-            <button type="button" className="player__full-screen" onClick={handleFullScreenButtonClick}>
-              <svg viewBox="0 0 27 27" width="27" height="27">
-                <use xlinkHref="#full-screen" />
-              </svg>
-              <span>Full screen</span>
-            </button>
-          </div>
+          <button type="button" className="player__full-screen" onClick={handleFullScreenButtonClick}>
+            <svg viewBox="0 0 27 27" width="27" height="27">
+              <use xlinkHref="#full-screen" />
+            </svg>
+            <span>Full screen</span>
+          </button>
         </div>
       </div>
-    </Fragment>
+    </div>
   );
 };
 

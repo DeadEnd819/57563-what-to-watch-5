@@ -1,4 +1,4 @@
-import React, {Fragment} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import Header from "../header/header";
 import Footer from "../footer/footer";
@@ -9,7 +9,7 @@ import {FilmCardType} from "../../prop-types/prop-types";
 
 
 const MyListScreen = ({films}) => {
-  return <Fragment>
+  return (
     <div className="user-page">
       <Header className={`user-page__head`}>
         <h1 className="page-title user-page__title">My list</h1>
@@ -25,7 +25,7 @@ const MyListScreen = ({films}) => {
       <Footer />
 
     </div>
-  </Fragment>;
+  );
 };
 
 MyListScreen.propTypes = {
