@@ -1,56 +1,49 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {Link} from "react-router-dom";
-import withAddReviewForm from "../../hocs/with-add-review-form";
+import {connect} from "react-redux";
+import Header from "../header/header";
 import AddReviewForm from "../add-review-form/add-review-form";
 import PropTypes from "prop-types";
+import {FilmScreenType} from "../../prop-types/prop-types";
+import {getCurrentFilm} from "../../store/selectors";
+import {fetchCurrentFilm} from "../../store/api-actions";
 
-const AddReviewFormWrapped = withAddReviewForm(AddReviewForm);
+const AddReviewScreen = ({film, loadFilm}) => {
+  const {id, name, backgroundImage, posterImage} = film;
 
-const AddReviewScreen = ({film}) => {
+  useEffect(() => {
+    loadFilm(id);
+  }, [id]);
 
   return (
     <section className="movie-card movie-card--full">
       <div className="movie-card__header">
         <div className="movie-card__bg">
-          <img src={film.backgroundImage} alt={film.name}/>
+          <img src={backgroundImage} alt={name}/>
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
 
-        <header className="page-header">
-          <div className="logo">
-            <Link to='/' className="logo__link">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </Link>
-          </div>
-
+        <Header>
           <nav className="breadcrumbs">
             <ul className="breadcrumbs__list">
               <li className="breadcrumbs__item">
-                <Link to={`/films/${film.id}`} className="breadcrumbs__link">{film.name}</Link>
+                <Link to={`/films/${id}`} className="breadcrumbs__link">{name}</Link>
               </li>
               <li className="breadcrumbs__item">
                 <a className="breadcrumbs__link">Add review</a>
               </li>
             </ul>
           </nav>
-
-          <div className="user-block">
-            <div className="user-block__avatar">
-              <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
-            </div>
-          </div>
-        </header>
+        </Header>
 
         <div className="movie-card__poster movie-card__poster--small">
-          <img src={film.posterImage} alt={`${film.name} poster`} width="218" height="327"/>
+          <img src={posterImage} alt={`${name} poster`} width="218" height="327"/>
         </div>
       </div>
 
       <div className="add-review">
-        <AddReviewFormWrapped />
+        <AddReviewForm id={id} />
       </div>
 
     </section>
@@ -58,7 +51,20 @@ const AddReviewScreen = ({film}) => {
 };
 
 AddReviewScreen.propTypes = {
-  film: PropTypes.object.isRequired,
+  id: PropTypes.string.isRequired,
+  film: FilmScreenType.isRequired,
+  loadFilm: PropTypes.func.isRequired,
 };
 
-export default AddReviewScreen;
+const mapStateToProps = (state) => ({
+  film: getCurrentFilm(state),
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  loadFilm(id) {
+    dispatch(fetchCurrentFilm(id));
+  },
+});
+
+export {AddReviewScreen};
+export default connect(mapStateToProps, mapDispatchToProps)(AddReviewScreen);

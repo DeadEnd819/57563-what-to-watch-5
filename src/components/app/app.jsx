@@ -1,65 +1,56 @@
 import React from "react";
-import PropTypes from "prop-types";
-import {connect} from "react-redux";
-import {Switch, Route, BrowserRouter} from "react-router-dom";
+import {Switch, Route, Router as BrowserRouter} from "react-router-dom";
 import MainScreen from "../main-screen/main-screen";
 import AuthScreen from "../auth-screen/auth-screen";
 import MyListScreen from "../my-list-screen/my-list-screen";
 import MovieScreen from "../movie-screen/movie-screen";
 import AddReviewScreen from "../add-review-screen/add-review-screen";
 import PlayerScreen from "../player-screen/player-screen";
-import {PromoTypes} from "../../prop-types/prop-types";
-import {getGenresList, getFavoriteFilms} from "../../utils";
+import PrivateRoute from "../private-route/private-route";
+import browserHistory from "../../browser-history";
+import {AppRoute} from "../../const";
 
-const App = ({promoFilm, films, reviews}) => {
+const {ROOT, LOGIN, MY_LIST, FILMS, REVIEW, PLAYER} = AppRoute;
+
+const App = () => {
 
   return (
-    <BrowserRouter>
+    <BrowserRouter history={browserHistory}>
       <Switch>
-        <Route exact path="/" render={({history}) => (
+        <Route exact path={ROOT} render={({history}) => (
           <MainScreen
-            promoFilm={promoFilm}
-            genresList={getGenresList(films)}
-            onPlayButtonClick={(id) => history.push(`/player/` + id)}
+            onPlayButtonClick={(id) => history.push(`${PLAYER}/${id}`)}
           />
         )} />
-        <Route exact path="/login">
+        <Route exact path={LOGIN}>
           <AuthScreen />
         </Route>
-        <Route exact path="/mylist">
-          <MyListScreen films={getFavoriteFilms(films)} />
-        </Route>
-        <Route exact path="/films/:id" render={({history}) => (
+        <PrivateRoute
+          exact path={MY_LIST}
+          render = {()=>
+            <MyListScreen/>}
+        />
+        <Route exact path={`${FILMS}/:id`} render={({match}) => (
           <MovieScreen
-            films={films}
-            film={promoFilm}
-            reviews={reviews}
-            onPlayButtonClick={(id) => history.push(`/player/` + id)}
+            id={match.params.id}
           />
         )} />
-        <Route exact path="/films/:id/review">
-          <AddReviewScreen film={promoFilm} />
-        </Route>
-        <Route exact path="/player/:id">
-          <PlayerScreen />
-        </Route>
+        <PrivateRoute exact path={`${FILMS}/:id${REVIEW}`}
+          render={(routerProps)=>{
+            return (
+              <AddReviewScreen id = {routerProps.match.params.id}/>);
+          }}/>
+        <Route exact path={`${PLAYER}/:id`} render={({match}) => (
+          <PlayerScreen
+            id={match.params.id}
+          />
+        )} />
       </Switch>
     </BrowserRouter>
   );
 };
 
-App.propTypes = {
-  promoFilm: PromoTypes.isRequired,
-  films: PropTypes.array.isRequired,
-  reviews: PropTypes.array.isRequired,
-};
+App.propTypes = {};
 
-const mapStateToProps = (state) => ({
-  films: state.films,
-  promoFilm: state.promoFilm,
-  reviews: state.reviews,
-});
-
-export {App};
-export default connect(mapStateToProps)(App);
+export default App;
 

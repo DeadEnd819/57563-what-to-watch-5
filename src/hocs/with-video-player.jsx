@@ -19,7 +19,9 @@ const withVideoPlayer = (Component) => {
       this._handleCardOut = this._handleCardOut.bind(this);
     }
 
-    _handleCardOver() {
+    _handleCardOver(evt) {
+      evt.preventDefault();
+
       this.setState({activePlay: true});
     }
 

@@ -1,40 +1,129 @@
-import React, {Fragment} from "react";
+import React, {Fragment, useState, useEffect, useCallback, useRef} from "react";
+import PropTypes from "prop-types";
+import {FilmCardType} from "../../prop-types/prop-types";
+import {Link} from "react-router-dom";
+import {connect} from "react-redux";
+import PlayerButton from "../player-button/player-button";
+import {fetchCurrentFilm} from "../../store/api-actions";
+import {getCurrentFilm} from "../../store/selectors";
+import {getVideoDuration, getToggleProgress, extend} from "../../utils";
+import {AppRoute} from "../../const";
 
-const PlayerScreen = () => {
-  return <Fragment>
-    <div className="player">
-      <video src="#" className="player__video" poster="img/player-poster.jpg"></video>
+const {FILMS} = AppRoute;
 
-      <button type="button" className="player__exit">Exit</button>
+const PlayerScreen = ({id, film, loadDataFilm}) => {
+  const {name, backgroundImage, videoLink} = film;
+  const videoRef = useRef();
 
-      <div className="player__controls">
-        <div className="player__controls-row">
-          <div className="player__time">
-            <progress className="player__progress" value="30" max="100"></progress>
-            <div className="player__toggler" style={{left: `30%`}}>Toggler</div>
+  const [playerState, setPlayerState] = useState({
+    isPlaying: true,
+    duration: 0,
+    progress: 0,
+  });
+
+  const {isPlaying, duration, progress} = playerState;
+  const timeLeft = getVideoDuration(duration - progress);
+  const toggleProgress = getToggleProgress(progress, duration);
+
+  useEffect(() => {
+    loadDataFilm(id);
+  }, [id]);
+
+  useEffect(() => {
+    const video = videoRef.current;
+
+    if (video) {
+      video.oncanplay = () => {
+        setPlayerState((prevState) => (
+          extend(prevState, {duration: Math.floor(video.duration)})
+        ));
+      };
+
+      video.ontimeupdate = () => {
+        setPlayerState((prevState) => (
+          extend(prevState, {progress: Math.floor(video.currentTime)})
+        ));
+      };
+
+      if (isPlaying) {
+        video.play();
+      } else {
+        video.pause();
+      }
+    }
+
+    return () => {
+      if (video) {
+        video.oncanplay = null;
+        video.ontimeupdate = null;
+      }
+    };
+  }, [isPlaying]);
+
+  const handleTogglePlayButtonClick = useCallback(
+      () => {
+        setPlayerState((prevState) => (
+          extend(prevState, {isPlaying: !isPlaying})
+        ));
+      }, [isPlaying]
+  );
+
+  const handleFullScreenButtonClick = useCallback(
+      () => {
+        const video = videoRef.current;
+        video.requestFullscreen();
+      }, [videoRef]
+  );
+
+  return (
+    <Fragment>
+      <div className="player">
+        <video ref={videoRef} src={videoLink} className="player__video" poster={backgroundImage} />
+
+        <Link to={`${FILMS}/${id}`} type="button" className="player__exit">Exit</Link>
+
+        <div className="player__controls">
+          <div className="player__controls-row">
+            <div className="player__time">
+              <progress className="player__progress" value={progress} max={duration}>
+              </progress>
+              <div className="player__toggler" style={{left: `${toggleProgress}%`}}>Toggler</div>
+            </div>
+            <div className="player__time-value">{timeLeft}</div>
           </div>
-          <div className="player__time-value">1:30:29</div>
-        </div>
 
-        <div className="player__controls-row">
-          <button type="button" className="player__play">
-            <svg viewBox="0 0 19 19" width="19" height="19">
-              <use xlinkHref="#play-s"></use>
-            </svg>
-            <span>Play</span>
-          </button>
-          <div className="player__name">Transpotting</div>
+          <div className="player__controls-row">
+            <PlayerButton isPlaying={isPlaying} onTogglePlayButtonClick={handleTogglePlayButtonClick}/>
+            <div className="player__name">{name}</div>
 
-          <button type="button" className="player__full-screen">
-            <svg viewBox="0 0 27 27" width="27" height="27">
-              <use xlinkHref="#full-screen"></use>
-            </svg>
-            <span>Full screen</span>
-          </button>
+            <button type="button" className="player__full-screen" onClick={handleFullScreenButtonClick}>
+              <svg viewBox="0 0 27 27" width="27" height="27">
+                <use xlinkHref="#full-screen" />
+              </svg>
+              <span>Full screen</span>
+            </button>
+          </div>
         </div>
       </div>
-    </div>
-  </Fragment>;
+    </Fragment>
+  );
 };
 
-export default PlayerScreen;
+PlayerScreen.propTypes = {
+  id: PropTypes.string.isRequired,
+  film: PropTypes.oneOfType([FilmCardType.isRequired, () => null]),
+  loadDataFilm: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  film: getCurrentFilm(state),
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  loadDataFilm(id) {
+    dispatch(fetchCurrentFilm(id));
+  },
+});
+
+export {PlayerScreen};
+export default connect(mapStateToProps, mapDispatchToProps)(PlayerScreen);

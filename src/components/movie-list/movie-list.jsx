@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {FilmCardType} from "../../prop-types/prop-types";
 import FilmCard from "../movie-card/movie-card";
 import withVideoPlayer from "../../hocs/with-video-player";
 
@@ -18,7 +19,7 @@ const MovieList = ({films, showCount}) => {
 };
 
 MovieList.propTypes = {
-  films: PropTypes.array.isRequired,
+  films: PropTypes.arrayOf(FilmCardType).isRequired,
   showCount: PropTypes.number.isRequired,
 };
 

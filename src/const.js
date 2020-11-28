@@ -1,8 +1,7 @@
-export const MocksUrl = {
-  TRAILER_URL: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
-  TRAILER_URL_TWO: ` https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
-};
-export const RATINGS_MOVIE = [`1`, `2`, `3`, `4`, `5`];
+export const BACKEND_URL = `https://5.react.pages.academy/wtw`;
+export const REQUEST_TIMEOUT = 5000;
+
+export const RATINGS_MOVIE_STARS = [`1`, `2`, `3`, `4`, `5`];
 export const MORE_MOVIE_COUNT = 4;
 export const SHOW_MOVIE_COUNT = 8;
 export const MIN_STARRING_COUNT = 0;
@@ -10,10 +9,52 @@ export const MAX_STARRING_COUNT = 4;
 export const VIDEO_TIME_OUT = 1000;
 export const MAX_GENRES_COUNT = 9;
 export const DEFAULT_MOVIE_RATING = `3`;
+export const DEFAULT_REVIEW_TEXT = ``;
+
+export const HttpCode = {
+  SUCCESS: 200,
+  UNAUTHORIZED: 401
+};
+
+export const AuthorizationStatus = {
+  AUTHORIZED: `AUTHORIZED`,
+  NOT_AUTHORIZED: `NOT_AUTHORIZED`,
+};
 
 export const ActionType = {
   CHANGE_GENRE: `CHANGE_GENRE`,
   INCREMENT_SHOW_FILMS_COUNT: `INCREMENT_SHOW_FILMS_COUNT`,
+  RESET_FILMS_FILTER: `RESET_FILMS_FILTER`,
+  LOAD_FILMS: `LOAD_FILMS`,
+  LOAD_PROMO_FILM: `LOAD_PROMO_FILM`,
+  LOAD_CURRENT_FILM: `CHANGE_CURRENT_FILM`,
+  LOAD_REVIEWS: `LOAD_REVIEWS`,
+  REQUIRE_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
+  SAVE_AUTHORIZATION_INFO: `SAVE_AUTHORIZATION_INFO`,
+  REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`,
+  SET_REVIEW_STATUS: `SET_REVIEW_STATUS`,
+};
+
+export const ReviewStatus = {
+  REVIEW_UPDATED: `REVIEW_UPDATED`,
+  REVIEW_NOT_UPDATED: `REVIEW_NOT_UPDATED`,
+};
+
+export const AppRoute = {
+  ROOT: `/`,
+  LOGIN: `/login`,
+  MY_LIST: `/mylist`,
+  FILMS: `/films`,
+  REVIEW: `/review`,
+  PLAYER: `/player`,
+};
+
+export const APIRoute = {
+  FILMS: `/films`,
+  PROMO: `/films/promo`,
+  FAVORITE: `/favorite`,
+  COMMENTS: `/comments`,
+  LOGIN: `/login`,
 };
 
 export const TabNames = {
@@ -32,15 +73,6 @@ export const RatingOptions = {
 
 export const GenresNames = {
   ALL_GENRES: `All genres`,
-  COMEDY: `Comedies`,
-  CRIME: `Crime`,
-  DOCUMENTARY: `Documentary`,
-  DRAMA: `Dramas`,
-  HORROR: `Horror`,
-  KIDS_AND_FAMILY: `Kids & Family`,
-  ROMANCE: `Romance`,
-  SCI_FI: `Sci-Fi`,
-  THRILLER: `Thrillers`,
 };
 
 export const MovieDetailsName = {
@@ -49,4 +81,9 @@ export const MovieDetailsName = {
   RUN_TIME: `Run Time`,
   GENRE: `Genre`,
   RELEASED: `Released`,
+};
+
+export const ReviewLengths = {
+  MIN: 50,
+  MAX: 400,
 };

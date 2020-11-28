@@ -5,7 +5,7 @@ import MovieDetails from "../movie-details/movie-details";
 import MovieReviews from "../movie-reviews/movie-reviews";
 import TabsItem from "../tabs-item/tabs-item";
 import {TabNames} from "../../const";
-import {FilmScreenType} from "../../prop-types/prop-types";
+import {FilmScreenType, ReviewType} from "../../prop-types/prop-types";
 
 const Tabs = ({film, reviews, activeTab, onTabClick}) => {
   const getTabComponent = () => {
@@ -36,8 +36,8 @@ const Tabs = ({film, reviews, activeTab, onTabClick}) => {
 
 Tabs.propTypes = {
   activeTab: PropTypes.string.isRequired,
-  film: FilmScreenType.isRequired,
-  reviews: PropTypes.array.isRequired,
+  film: PropTypes.oneOfType([FilmScreenType.isRequired, () => null]),
+  reviews: PropTypes.arrayOf(ReviewType).isRequired,
   onTabClick: PropTypes.func.isRequired,
 };
 

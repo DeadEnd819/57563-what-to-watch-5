@@ -1,22 +1,28 @@
-import React, {Fragment} from "react";
+import React, {Fragment, useEffect} from "react";
+import {connect} from "react-redux";
 import PropTypes from "prop-types";
-import {Link} from "react-router-dom";
 import Header from "../header/header";
+import Footer from "../footer/footer";
+import MovieMenu from "../movie-menu/movie-menu";
 import MovieList from "../movie-list/movie-list";
 import Tabs from "../tabs/tabs";
 import withTabs from "../../hocs/with-tabs";
-import {FilmScreenType} from "../../prop-types/prop-types";
+import {FilmCardType, FilmScreenType, ReviewType} from "../../prop-types/prop-types";
 import {MORE_MOVIE_COUNT} from "../../const";
-import {getFilmsByGenre} from "../../utils";
+import {fetchCurrentFilm, fetchReviews} from "../../store/api-actions";
+import {getSimilarFilms, getCurrentFilm, getReviews, isUserLoggedIn} from "../../store/selectors";
 
 const TabsWrapped = withTabs(Tabs);
 
-const MovieScreen = ({films, film, reviews, onPlayButtonClick}) => {
-  const {id, name, posterImage, backgroundImage, genre, released} = film;
-  const similarFilm = getFilmsByGenre(films, genre);
+const MovieScreen = ({currentFilm, loadDataFilm, id, similarFilms, reviews, isUserLogged}) => {
+  useEffect(() => {
+    loadDataFilm(id);
+  }, [id]);
+
+  const {name, posterImage, backgroundImage, backgroundColor} = currentFilm;
 
   return <Fragment>
-    <section className="movie-card movie-card--full">
+    <section className="movie-card movie-card--full" style={{backgroundColor}}>
       <div className="movie-card__hero">
         <div className="movie-card__bg">
           <img src={backgroundImage} alt={name}/>
@@ -24,32 +30,12 @@ const MovieScreen = ({films, film, reviews, onPlayButtonClick}) => {
 
         <h1 className="visually-hidden">WTW</h1>
 
-        <Header />
+        <Header className={`movie-card__head`}/>
 
         <div className="movie-card__wrap">
-          <div className="movie-card__desc">
-            <h2 className="movie-card__title">{name}</h2>
-            <p className="movie-card__meta">
-              <span className="movie-card__genre">{genre}</span>
-              <span className="movie-card__year">{released}</span>
-            </p>
 
-            <div className="movie-card__buttons">
-              <button className="btn btn--play movie-card__button" type="button" onClick={() => onPlayButtonClick(id)}>
-                <svg viewBox="0 0 19 19" width="19" height="19">
-                  <use xlinkHref="#play-s"></use>
-                </svg>
-                <span>Play</span>
-              </button>
-              <button className="btn btn--list movie-card__button" type="button">
-                <svg viewBox="0 0 19 20" width="19" height="20">
-                  <use xlinkHref="#add"></use>
-                </svg>
-                <span>My list</span>
-              </button>
-              <Link to={`/films/${id}/review`} className="btn movie-card__button">Add review</Link>
-            </div>
-          </div>
+          <MovieMenu film={currentFilm} isUserLogged={isUserLogged} />
+
         </div>
       </div>
 
@@ -61,7 +47,7 @@ const MovieScreen = ({films, film, reviews, onPlayButtonClick}) => {
 
           <div className="movie-card__desc">
 
-            <TabsWrapped film={film} reviews={reviews} />
+            <TabsWrapped film={currentFilm} reviews={reviews} />
 
           </div>
         </div>
@@ -72,32 +58,38 @@ const MovieScreen = ({films, film, reviews, onPlayButtonClick}) => {
       <section className="catalog catalog--like-this">
         <h2 className="catalog__title">More like this</h2>
 
-        <MovieList films={similarFilm} showCount={MORE_MOVIE_COUNT} />
+        <MovieList films={similarFilms} showCount={MORE_MOVIE_COUNT} />
 
       </section>
 
-      <footer className="page-footer">
-        <div className="logo">
-          <Link to='/' className="logo__link logo__link--light">
-            <span className="logo__letter logo__letter--1">W</span>
-            <span className="logo__letter logo__letter--2">T</span>
-            <span className="logo__letter logo__letter--3">W</span>
-          </Link>
-        </div>
-
-        <div className="copyright">
-          <p>© 2019 What to watch Ltd.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   </Fragment>;
 };
 
 MovieScreen.propTypes = {
-  film: FilmScreenType.isRequired,
-  films: PropTypes.array.isRequired,
-  reviews: PropTypes.array.isRequired,
-  onPlayButtonClick: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
+  currentFilm: PropTypes.oneOfType([FilmScreenType.isRequired, () => null]),
+  similarFilms: PropTypes.oneOfType([PropTypes.arrayOf(FilmCardType), () => null]),
+  reviews: PropTypes.arrayOf(ReviewType).isRequired,
+  loadDataFilm: PropTypes.func.isRequired,
+  isUserLogged: PropTypes.bool.isRequired,
 };
 
-export default MovieScreen;
+const mapStateToProps = (state, props) => ({
+  currentFilm: getCurrentFilm(state),
+  similarFilms: getSimilarFilms(state, props),
+  reviews: getReviews(state),
+  isUserLogged: isUserLoggedIn(state),
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  loadDataFilm(id) {
+    dispatch(fetchCurrentFilm(id));
+    dispatch(fetchReviews(id));
+  },
+});
+
+export {MovieScreen};
+export default connect(mapStateToProps, mapDispatchToProps)(MovieScreen);
+
