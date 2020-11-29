@@ -1,9 +1,9 @@
 import React, {Fragment} from "react";
-import moment from "moment";
+import {getReviewDate, getDateTime} from "../../utils";
 import {ReviewType} from "../../prop-types/prop-types";
 
 const ReviewItem = ({review}) => {
-  const {name, rating, comment, date} = review;
+  const {user, rating, comment, date} = review;
 
   return <Fragment key={review.id}>
     <div className="review">
@@ -11,9 +11,9 @@ const ReviewItem = ({review}) => {
         <p className="review__text">{comment}</p>
 
         <footer className="review__details">
-          <cite className="review__author">{name}</cite>
-          <time className="review__date" dateTime={date}>
-            {moment(date).format(`MMMM DD, YYYY`)}
+          <cite className="review__author">{user.name}</cite>
+          <time className="review__date" dateTime={getDateTime(date)}>
+            {getReviewDate(date)}
           </time>
         </footer>
       </blockquote>

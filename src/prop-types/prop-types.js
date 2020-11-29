@@ -2,11 +2,29 @@ import PropTypes from "prop-types";
 
 const {arrayOf, shape, number, string, bool} = PropTypes;
 
+export const MovieOverviewType = shape({
+  rating: number.isRequired,
+  scoresCount: number.isRequired,
+  description: string.isRequired,
+  director: string.isRequired,
+  starring: arrayOf(string).isRequired,
+});
+
+export const MovieMenuType = shape({
+  id: number.isRequired,
+  name: string.isRequired,
+  genre: string.isRequired,
+  released: number.isRequired,
+  isFavorite: bool.isRequired,
+});
+
 export const FilmCardType = shape({
   id: number.isRequired,
   name: string.isRequired,
+  genre: string.isRequired,
   previewImage: string.isRequired,
   previewVideoLink: string.isRequired,
+  isFavorite: bool.isRequired,
 });
 
 export const FilmScreenType = shape({
@@ -28,7 +46,10 @@ export const FilmScreenType = shape({
 
 export const ReviewType = shape({
   id: number.isRequired,
-  name: string.isRequired,
+  user: shape({
+    id: number.isRequired,
+    name: string.isRequired,
+  }),
   rating: number.isRequired,
   comment: string.isRequired,
   date: string.isRequired,

@@ -1,34 +1,27 @@
-import React from "react";
-import {Link} from "react-router-dom";
+ import React from "react";
 import PropTypes from "prop-types";
-import HeaderLogo from "../header-logo/header-logo";
+import Logo from "../logo/logo";
+import UserBlock from "../user-block/user-block";
 
-const Header = ({isMain}) => {
-
+const Header = ({children, className, showUserBlock}) => {
   return (
-    <header className="page-header movie-card__head">
-      <div className="logo">
-        {isMain ?
-          <a className="logo__link">
-            <HeaderLogo />
-          </a>
-          : <Link to="/" className="logo__link">
-            <HeaderLogo />
-          </Link>
-        }
-      </div>
-
-      <div className="user-block">
-        <div className="user-block__avatar">
-          <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
-        </div>
-      </div>
+    <header className={`page-header ${className}`}>
+      <Logo />
+      {children}
+      {showUserBlock && <UserBlock/>}
     </header>
   );
 };
 
+Header.defaultProps = {
+  className: ``,
+  showUserBlock: true,
+};
+
 Header.propTypes = {
-  isMain: PropTypes.bool,
+  children: PropTypes.element,
+  className: PropTypes.string,
+  showUserBlock: PropTypes.bool,
 };
 
 export default Header;

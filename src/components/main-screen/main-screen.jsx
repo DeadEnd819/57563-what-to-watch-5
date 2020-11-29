@@ -1,21 +1,27 @@
-import React from "react";
+import React, {Fragment} from "react";
+import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import Header from "../header/header";
+import Footer from "../footer/footer";
+import MovieMenu from "../movie-menu/movie-menu";
 import MovieCatalog from "../movie-catalog/movie-catalog";
 import {PromoTypes} from "../../prop-types/prop-types";
+import {resetFilter} from "../../store/action";
 
-const MainScreen = ({promoFilm, genresList, onPlayButtonClick}) => {
-  const {name, posterImage, genre, released} = promoFilm;
+const MainScreen = ({promoFilm, resetFilterAction}) => {
+  const {name, backgroundImage, posterImage} = promoFilm;
 
-  return <React.Fragment>
+  resetFilterAction();
+
+  return <Fragment>
     <section className="movie-card">
       <div className="movie-card__bg">
-        <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel"/>
+        <img src={backgroundImage} alt={name}/>
       </div>
 
       <h1 className="visually-hidden">WTW</h1>
 
-      <Header isMain={true} />
+      <Header className={`movie-card__head`}/>
 
       <div className="movie-card__wrap">
         <div className="movie-card__info">
@@ -23,57 +29,36 @@ const MainScreen = ({promoFilm, genresList, onPlayButtonClick}) => {
             <img src={posterImage} alt={`${name} poster`} width="218" height="327"/>
           </div>
 
-          <div className="movie-card__desc">
-            <h2 className="movie-card__title">{name}</h2>
-            <p className="movie-card__meta">
-              <span className="movie-card__genre">{genre}</span>
-              <span className="movie-card__year">{released}</span>
-            </p>
-
-            <div className="movie-card__buttons">
-              <button className="btn btn--play movie-card__button" type="button" onClick={() => onPlayButtonClick(promoFilm.id)}>
-                <svg viewBox="0 0 19 19" width="19" height="19">
-                  <use xlinkHref="#play-s"></use>
-                </svg>
-                <span>Play</span>
-              </button>
-              <button className="btn btn--list movie-card__button" type="button">
-                <svg viewBox="0 0 19 20" width="19" height="20">
-                  <use xlinkHref="#add"></use>
-                </svg>
-                <span>My list</span>
-              </button>
-            </div>
-          </div>
+          <MovieMenu film={promoFilm} />
         </div>
       </div>
     </section>
 
     <div className="page-content">
 
-      <MovieCatalog genresList={genresList} />
+      <MovieCatalog />
 
-      <footer className="page-footer">
-        <div className="logo">
-          <a className="logo__link logo__link--light">
-            <span className="logo__letter logo__letter--1">W</span>
-            <span className="logo__letter logo__letter--2">T</span>
-            <span className="logo__letter logo__letter--3">W</span>
-          </a>
-        </div>
+      <Footer />
 
-        <div className="copyright">
-          <p>© 2019 What to watch Ltd.</p>
-        </div>
-      </footer>
     </div>
-  </React.Fragment>;
+  </Fragment>;
 };
 
 MainScreen.propTypes = {
   promoFilm: PromoTypes.isRequired,
-  genresList: PropTypes.array.isRequired,
-  onPlayButtonClick: PropTypes.func.isRequired,
+  resetFilterAction: PropTypes.func.isRequired,
 };
 
-export default MainScreen;
+const mapStateToProps = ({DATA}) => ({
+  promoFilm: DATA.promo,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  resetFilterAction() {
+    dispatch(resetFilter());
+  }
+});
+
+export {MainScreen};
+export default connect(mapStateToProps, mapDispatchToProps)(MainScreen);
+

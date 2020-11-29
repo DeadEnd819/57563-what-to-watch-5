@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should MainScreen render correctly 1`] = `
+Array [
+  <section
+    className="movie-card"
+  >
+    <div
+      className="movie-card__bg"
+    >
+      <img
+        alt="The Grand Budapest Hotel"
+        src="bg-the-grand-budapest-hotel.jpg"
+      />
+    </div>
+    <h1
+      className="visually-hidden"
+    >
+      WTW
+    </h1>
+    <Header
+      className="movie-card__head"
+    />
+    <div
+      className="movie-card__wrap"
+    >
+      <div
+        className="movie-card__info"
+      >
+        <div
+          className="movie-card__poster"
+        >
+          <img
+            alt="The Grand Budapest Hotel poster"
+            height="327"
+            src="the-grand-budapest-hotel-poster.jpg"
+            width="218"
+          />
+        </div>
+        <MovieMenu
+          film={
+            Object {
+              "backgroundColor": "#000000",
+              "backgroundImage": "bg-the-grand-budapest-hotel.jpg",
+              "genre": "Drama",
+              "id": 1,
+              "isFavorite": false,
+              "name": "The Grand Budapest Hotel",
+              "posterImage": "the-grand-budapest-hotel-poster.jpg",
+              "released": 2014,
+            }
+          }
+        />
+      </div>
+    </div>
+  </section>,
+  <div
+    className="page-content"
+  >
+    <MovieCatalog />
+    <Footer />
+  </div>,
+]
+`;

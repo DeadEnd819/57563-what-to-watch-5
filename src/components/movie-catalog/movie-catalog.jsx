@@ -1,17 +1,19 @@
 import React from "react";
 import {connect} from "react-redux";
-import {ActionCreator} from "../../store/action";
+import {changeGenre, incrementShowFilmsCount} from "../../store/action";
 import PropTypes from "prop-types";
+import {FilmCardType} from "../../prop-types/prop-types";
 import MovieGenresList from "../movie-genres-list/movie-genres-list";
 import ShowMoreButton from "../show-more-button/show-more-button";
 import MovieList from "../movie-list/movie-list";
+import {getGenre, getGenres, getFilmsCount, getFilteredFilms} from "../../store/selectors";
 
-const MovieCatalog = ({genresList, filteredFilms, genre, showFilmsCount, changeGenre, showMoreCards}) => {
+const MovieCatalog = ({genresList, filteredFilms, genre, showFilmsCount, changeGenreAction, showMoreCards}) => {
   return (
     <section className="catalog">
       <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-      <MovieGenresList genresList={genresList} activeGenre={genre} onGenreClick={changeGenre} />
+      <MovieGenresList genresList={genresList} activeGenre={genre} onGenreClick={changeGenreAction} />
 
       <MovieList films={filteredFilms} showCount={showFilmsCount} />
 
@@ -22,25 +24,26 @@ const MovieCatalog = ({genresList, filteredFilms, genre, showFilmsCount, changeG
 
 MovieCatalog.propTypes = {
   genresList: PropTypes.array.isRequired,
-  filteredFilms: PropTypes.array.isRequired,
+  filteredFilms: PropTypes.arrayOf(FilmCardType).isRequired,
   genre: PropTypes.string.isRequired,
   showFilmsCount: PropTypes.number.isRequired,
-  changeGenre: PropTypes.func.isRequired,
+  changeGenreAction: PropTypes.func.isRequired,
   showMoreCards: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  genre: state.genre,
-  filteredFilms: state.filteredFilms,
-  showFilmsCount: state.showFilmsCount,
+  genre: getGenre(state),
+  genresList: getGenres(state),
+  showFilmsCount: getFilmsCount(state),
+  filteredFilms: getFilteredFilms(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  changeGenre(genre) {
-    dispatch(ActionCreator.changeGenre(genre));
+  changeGenreAction(genre) {
+    dispatch(changeGenre(genre));
   },
   showMoreCards() {
-    dispatch(ActionCreator.incrementShowFilmsCount());
+    dispatch(incrementShowFilmsCount());
   },
 });
 

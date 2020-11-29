@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render Header Should Header render correctly 1`] = `
+<header
+  className="page-header user-page__head"
+>
+  <Logo />
+</header>
+`;
+
+exports[`Render Header Should the Header with the user block render correctly 1`] = `
+<header
+  className="page-header movie-card__head"
+>
+  <Logo />
+  <UserBlock />
+</header>
+`;
