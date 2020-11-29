@@ -11,8 +11,8 @@ const MovieList = ({films, showCount}) => {
 
   return (
     <div className="catalog__movies-list">
-      {films.slice(0, filmsShowCount).map((film) =>
-        <FilmCardWrapped key={film.id} film={film} />
+      {films.slice(0, filmsShowCount).map((film, i) =>
+        <FilmCardWrapped key={i + film.name} film={film} />
       )}
     </div>
   );

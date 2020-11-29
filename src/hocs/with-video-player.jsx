@@ -64,13 +64,13 @@ const withVideoPlayer = (Component) => {
 
       return <Component
         {...this.props}
-        renderPlayer={(previewVideoLink, poster) => {
+        renderPlayer={(previewVideoLink, previewImage) => {
           return (
             <VideoPlayer
               videoRef={this._videoRef}
               activePlay={activePlay}
               previewVideoLink={previewVideoLink}
-              poster={poster}
+              poster={previewImage}
               onMovieCardOver ={this._handleCardOver}
               onMovieCardOut={this._handleCardOut}
             />
