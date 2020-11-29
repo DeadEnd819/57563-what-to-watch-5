@@ -1,22 +1,33 @@
-import React from "react";
+import React, {useEffect, useRef} from "react";
 import PropTypes from "prop-types";
+import {VIDEO_TIME_OUT} from "../../const";
 
-const VideoPlayer = ({videoRef, previewVideoLink, poster, onMovieCardOver, onMovieCardOut}) => {
+const VideoPlayer = ({previewImage, previewVideoLink}) => {
+  const videoRef = useRef(null);
+
+  useEffect(()=>{
+    const video = videoRef.current;
+    videoRef.current.oncanplaythrough = () => {
+      setTimeout(() => {
+        video.play();
+      }, VIDEO_TIME_OUT);
+    };
+
+    return ()=>{
+      videoRef.current.oncanplaythrough = null;
+    };
+  });
 
   return (
-    <div className="small-movie-card__image" onMouseOver={onMovieCardOver} onMouseOut={onMovieCardOut}>
-      <video ref={videoRef} autoPlay={false} poster={poster} src={previewVideoLink} width="280" height="175" muted>
-      </video>
-    </div>
+    <video width="280" height="175" muted="muted" poster={previewImage} ref = {videoRef}>
+      <source src={previewVideoLink}/>
+    </video>
   );
 };
 
 VideoPlayer.propTypes = {
-  videoRef: PropTypes.object.isRequired,
+  previewImage: PropTypes.string.isRequired,
   previewVideoLink: PropTypes.string.isRequired,
-  poster: PropTypes.string.isRequired,
-  onMovieCardOver: PropTypes.func.isRequired,
-  onMovieCardOut: PropTypes.func.isRequired,
 };
 
 export default VideoPlayer;

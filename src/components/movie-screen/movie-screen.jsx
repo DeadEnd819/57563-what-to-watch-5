@@ -1,4 +1,4 @@
-import React, {Fragment, useEffect} from "react";
+import React, {Fragment, useEffect, memo} from "react";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import Header from "../header/header";
@@ -12,7 +12,7 @@ import {MORE_MOVIE_COUNT} from "../../const";
 import {fetchCurrentFilm, fetchReviews} from "../../store/api-actions";
 import {getSimilarFilms, getCurrentFilm, getReviews, isUserLoggedIn} from "../../store/selectors";
 
-const TabsWrapped = withTabs(Tabs);
+const MemoTabsWrapped = memo(withTabs(Tabs));
 
 const MovieScreen = ({currentFilm, loadDataFilm, id, similarFilms, reviews, isUserLogged}) => {
   useEffect(() => {
@@ -47,7 +47,7 @@ const MovieScreen = ({currentFilm, loadDataFilm, id, similarFilms, reviews, isUs
 
           <div className="movie-card__desc">
 
-            <TabsWrapped film={currentFilm} reviews={reviews} />
+            <MemoTabsWrapped film={currentFilm} reviews={reviews} />
 
           </div>
         </div>
