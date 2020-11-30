@@ -25,7 +25,7 @@ const AddReviewForm = ({id, reviewStatus, updateReviewAction, setReviewStatusAct
   });
 
   const {rating, text} = reviewState;
-  const isReviewValid = rating && (text.length > MIN && text.length < MAX);
+  const isReviewValid = rating && (text.length >= MIN && text.length <= MAX);
 
   useEffect(() => {
     setStatus(reviewStatus === REVIEW_UPDATED);

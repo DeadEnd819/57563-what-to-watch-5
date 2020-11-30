@@ -109,7 +109,7 @@ const PlayerScreen = ({id, film, loadDataFilm}) => {
 
 PlayerScreen.propTypes = {
   id: PropTypes.string.isRequired,
-  film: PropTypes.oneOfType([FilmCardType.isRequired, () => null]),
+  film: FilmCardType.isRequired,
   loadDataFilm: PropTypes.func.isRequired,
 };
 

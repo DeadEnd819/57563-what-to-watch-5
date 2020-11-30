@@ -1,4 +1,4 @@
-import React from "react";
+import React, {memo} from "react";
 import {connect} from "react-redux";
 import {changeGenre, incrementShowFilmsCount} from "../../store/action";
 import PropTypes from "prop-types";
@@ -8,12 +8,14 @@ import ShowMoreButton from "../show-more-button/show-more-button";
 import MovieList from "../movie-list/movie-list";
 import {getGenre, getGenres, getFilmsCount, getFilteredFilms} from "../../store/selectors";
 
+const MemoMovieGenresList = memo(MovieGenresList);
+
 const MovieCatalog = ({genresList, filteredFilms, genre, showFilmsCount, changeGenreAction, showMoreCards}) => {
   return (
     <section className="catalog">
       <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-      <MovieGenresList genresList={genresList} activeGenre={genre} onGenreClick={changeGenreAction} />
+      <MemoMovieGenresList genresList={genresList} activeGenre={genre} onGenreClick={changeGenreAction} />
 
       <MovieList films={filteredFilms} showCount={showFilmsCount} />
 
@@ -23,7 +25,7 @@ const MovieCatalog = ({genresList, filteredFilms, genre, showFilmsCount, changeG
 };
 
 MovieCatalog.propTypes = {
-  genresList: PropTypes.array.isRequired,
+  genresList: PropTypes.arrayOf(PropTypes.string).isRequired,
   filteredFilms: PropTypes.arrayOf(FilmCardType).isRequired,
   genre: PropTypes.string.isRequired,
   showFilmsCount: PropTypes.number.isRequired,

@@ -1,5 +1,5 @@
-import React from "react";
-import {Switch, Route, Router as BrowserRouter} from "react-router-dom";
+import React, {Link} from "react";
+import {Switch, Route, Router} from "react-router-dom";
 import MainScreen from "../main-screen/main-screen";
 import AuthScreen from "../auth-screen/auth-screen";
 import MyListScreen from "../my-list-screen/my-list-screen";
@@ -15,7 +15,7 @@ const {ROOT, LOGIN, MY_LIST, FILMS, REVIEW, PLAYER} = AppRoute;
 const App = () => {
 
   return (
-    <BrowserRouter history={browserHistory}>
+    <Router history={browserHistory}>
       <Switch>
         <Route exact path={ROOT} render={({history}) => (
           <MainScreen
@@ -36,17 +36,24 @@ const App = () => {
           />
         )} />
         <PrivateRoute exact path={`${FILMS}/:id${REVIEW}`}
-          render={(routerProps)=>{
+          render={({match})=>{
             return (
-              <AddReviewScreen id = {routerProps.match.params.id}/>);
+              <AddReviewScreen id = {match.params.id}/>);
           }}/>
         <Route exact path={`${PLAYER}/:id`} render={({match}) => (
           <PlayerScreen
             id={match.params.id}
           />
         )} />
+        <Route
+          render={() => (
+            <>
+              <h1>404.</h1>
+              <p>Page not found</p>
+              <Link to={`/`}>Go to main page</Link>
+            </>)}/>
       </Switch>
-    </BrowserRouter>
+    </Router>
   );
 };
 

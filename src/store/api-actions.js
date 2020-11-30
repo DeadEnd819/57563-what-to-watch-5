@@ -85,7 +85,7 @@ export const updateFavoriteFilm = (id, status) => (dispatch, _getState, api) => 
         Error(`error addToFavorites`);
       }
     })
-    .then(() => dispatch(fetchFilmsList()))
+    .then(() => dispatch(fetchCurrentFilm(id)))
     .then(() => dispatch(fetchPromoFilm()))
     .catch((error) => {
       throw error;

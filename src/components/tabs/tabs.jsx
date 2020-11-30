@@ -36,7 +36,7 @@ const Tabs = ({film, reviews, activeTab, onTabClick}) => {
 
 Tabs.propTypes = {
   activeTab: PropTypes.string.isRequired,
-  film: PropTypes.oneOfType([FilmScreenType.isRequired, () => null]),
+  film: FilmScreenType.isRequired,
   reviews: PropTypes.arrayOf(ReviewType).isRequired,
   onTabClick: PropTypes.func.isRequired,
 };

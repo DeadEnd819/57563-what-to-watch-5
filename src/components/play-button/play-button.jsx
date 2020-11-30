@@ -18,7 +18,7 @@ const PlayButton = ({id}) => {
 };
 
 PlayButton.propTypes = {
-  id: PropTypes.oneOfType([PropTypes.number.isRequired, () => null]),
+  id: PropTypes.number.isRequired,
 };
 
 export default PlayButton;

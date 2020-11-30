@@ -1,17 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import {MainScreen} from "./main-screen";
-
-const promoFilm = {
-  id: 1,
-  name: `The Grand Budapest Hotel`,
-  posterImage: `the-grand-budapest-hotel-poster.jpg`,
-  backgroundImage: `bg-the-grand-budapest-hotel.jpg`,
-  backgroundColor: `#000000`,
-  genre: `Drama`,
-  released: 2014,
-  isFavorite: false,
-};
+import {promoFilm} from "../../testMocks";
 
 jest.mock(`../header/header.jsx`, () => `Header`);
 jest.mock(`../footer/footer.jsx`, () => `Footer`);
@@ -25,6 +15,7 @@ it(`Should MainScreen render correctly`, () => {
     .create(<MainScreen
       promoFilm={promoFilm}
       resetFilterAction={noop}
+      isUserLogged={true}
     />)
     .toJSON();
 

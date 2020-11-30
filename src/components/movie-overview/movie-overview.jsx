@@ -2,7 +2,6 @@ import React from "react";
 import {MovieOverviewType} from "../../prop-types/prop-types";
 import {MIN_STARRING_COUNT, MAX_STARRING_COUNT} from "../../const";
 import {getRatingQuality} from "../../utils";
-import PropTypes from "prop-types";
 
 const MovieOverview = ({film}) => {
   const {rating, scoresCount, description, director, starring} = film;
@@ -39,7 +38,7 @@ const MovieOverview = ({film}) => {
 };
 
 MovieOverview.propTypes = {
-  film: PropTypes.oneOfType([MovieOverviewType.isRequired, () => null]),
+  film: MovieOverviewType.isRequired,
 };
 
 export default MovieOverview;

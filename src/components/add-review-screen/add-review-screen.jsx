@@ -51,7 +51,6 @@ const AddReviewScreen = ({film, loadFilm}) => {
 };
 
 AddReviewScreen.propTypes = {
-  id: PropTypes.string.isRequired,
   film: FilmScreenType.isRequired,
   loadFilm: PropTypes.func.isRequired,
 };

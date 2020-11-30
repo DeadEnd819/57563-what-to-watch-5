@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render MovieCard Should MovieCard active player render correctly 1`] = `
+<article
+  className="small-movie-card catalog__movies-card"
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+>
+  <Link
+    className="small-movie-card__link"
+    to="/films/1"
+  >
+    <div
+      className="small-movie-card__image"
+    >
+      <VideoPlayer
+        previewImage="bg-the-grand-budapest-hotel.jpg"
+        previewVideoLink="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+    >
+      <span
+        className="small-movie-card__link"
+      >
+        The Grand Budapest Hotel
+      </span>
+    </h3>
+  </Link>
+</article>
+`;
+
+exports[`Render MovieCard Should MovieCard render correctly 1`] = `
+<article
+  className="small-movie-card catalog__movies-card"
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+>
+  <Link
+    className="small-movie-card__link"
+    to="/films/1"
+  >
+    <div
+      className="small-movie-card__image"
+    >
+      <img
+        alt="The Grand Budapest Hotel"
+        height="175"
+        src="bg-the-grand-budapest-hotel.jpg"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+    >
+      <span
+        className="small-movie-card__link"
+      >
+        The Grand Budapest Hotel
+      </span>
+    </h3>
+  </Link>
+</article>
+`;

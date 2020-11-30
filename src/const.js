@@ -87,3 +87,34 @@ export const ReviewLengths = {
   MIN: 50,
   MAX: 400,
 };
+
+export const defaultFilm = {
+  id: 1,
+  name: ``,
+  posterImage: ``,
+  previewImage: ``,
+  backgroundImage: ``,
+  backgroundColor: `#000000`,
+  previewVideoLink: ``,
+  description: ``,
+  rating: 0,
+  scoresCount: 0,
+  director: ``,
+  starring: [``],
+  runTime: 0,
+  genre: `Comedy`,
+  released: 0,
+  isFavorite: false,
+};
+
+export const defaultReview = {
+  id: 1,
+  user: {
+    id: 19,
+    name: ``,
+  },
+  rating: 1,
+  comment: ``,
+  date: ``,
+};
+

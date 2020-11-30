@@ -7,8 +7,9 @@ import MovieMenu from "../movie-menu/movie-menu";
 import MovieCatalog from "../movie-catalog/movie-catalog";
 import {PromoTypes} from "../../prop-types/prop-types";
 import {resetFilter} from "../../store/action";
+import {isUserLoggedIn} from "../../store/selectors";
 
-const MainScreen = ({promoFilm, resetFilterAction}) => {
+const MainScreen = ({promoFilm, resetFilterAction, isUserLogged}) => {
   const {name, backgroundImage, posterImage} = promoFilm;
 
   resetFilterAction();
@@ -29,7 +30,7 @@ const MainScreen = ({promoFilm, resetFilterAction}) => {
             <img src={posterImage} alt={`${name} poster`} width="218" height="327"/>
           </div>
 
-          <MovieMenu film={promoFilm} />
+          <MovieMenu film={promoFilm} isMain={true} isUserLogged={isUserLogged}/>
         </div>
       </div>
     </section>
@@ -47,10 +48,12 @@ const MainScreen = ({promoFilm, resetFilterAction}) => {
 MainScreen.propTypes = {
   promoFilm: PromoTypes.isRequired,
   resetFilterAction: PropTypes.func.isRequired,
+  isUserLogged: PropTypes.bool.isRequired,
 };
 
-const mapStateToProps = ({DATA}) => ({
-  promoFilm: DATA.promo,
+const mapStateToProps = (state) => ({
+  promoFilm: state.DATA.promo,
+  isUserLogged: isUserLoggedIn(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

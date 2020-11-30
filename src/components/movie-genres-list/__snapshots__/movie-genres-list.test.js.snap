@@ -1,0 +1,106 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should MovieGenresList render correctly 1`] = `
+<ul
+  className="catalog__genres-list"
+>
+  <MovieGenresItem
+    genre="Action"
+    genresList={
+      Array [
+        "Action",
+        "Adventure",
+        "Comedy",
+        "Crime",
+        "Drama",
+        "Fantasy",
+        "Thriller",
+      ]
+    }
+  />
+  <MovieGenresItem
+    genre="Adventure"
+    genresList={
+      Array [
+        "Action",
+        "Adventure",
+        "Comedy",
+        "Crime",
+        "Drama",
+        "Fantasy",
+        "Thriller",
+      ]
+    }
+  />
+  <MovieGenresItem
+    genre="Comedy"
+    genresList={
+      Array [
+        "Action",
+        "Adventure",
+        "Comedy",
+        "Crime",
+        "Drama",
+        "Fantasy",
+        "Thriller",
+      ]
+    }
+  />
+  <MovieGenresItem
+    genre="Crime"
+    genresList={
+      Array [
+        "Action",
+        "Adventure",
+        "Comedy",
+        "Crime",
+        "Drama",
+        "Fantasy",
+        "Thriller",
+      ]
+    }
+  />
+  <MovieGenresItem
+    genre="Drama"
+    genresList={
+      Array [
+        "Action",
+        "Adventure",
+        "Comedy",
+        "Crime",
+        "Drama",
+        "Fantasy",
+        "Thriller",
+      ]
+    }
+  />
+  <MovieGenresItem
+    genre="Fantasy"
+    genresList={
+      Array [
+        "Action",
+        "Adventure",
+        "Comedy",
+        "Crime",
+        "Drama",
+        "Fantasy",
+        "Thriller",
+      ]
+    }
+  />
+  <MovieGenresItem
+    genre="Thriller"
+    genresList={
+      Array [
+        "Action",
+        "Adventure",
+        "Comedy",
+        "Crime",
+        "Drama",
+        "Fantasy",
+        "Thriller",
+      ]
+    }
+  />
+</ul>
+`;
