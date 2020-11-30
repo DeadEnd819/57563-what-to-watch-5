@@ -8,7 +8,6 @@ jest.mock(`../footer/footer.jsx`, () => `Footer`);
 jest.mock(`../movie-menu/movie-menu.jsx`, () => `MovieMenu`);
 jest.mock(`../movie-list/movie-list.jsx`, () => `MovieList`);
 jest.mock(`../tabs/tabs.jsx`, () => `Tabs`);
-jest.mock(`../../hocs/with-tabs.jsx`, () => `withTabs`);
 
 const renderer = new ShallowRenderer();
 const noop = ()=>{};
@@ -17,7 +16,7 @@ describe(`Render MovieScreen`, () => {
   it(`Should MovieScreen isUserLogged render correctly`, () => {
     renderer.render(
         <MovieScreen
-          id={2}
+          id={`2`}
           isUserLogged={false}
           currentFilm={film}
           similarFilms={[film, film, film, film]}
@@ -34,7 +33,7 @@ describe(`Render MovieScreen`, () => {
   it(`Should MovieScreen render correctly`, () => {
     renderer.render(
         <MovieScreen
-          id={2}
+          id={`2`}
           isUserLogged={false}
           currentFilm={film}
           similarFilms={[film, film, film, film]}

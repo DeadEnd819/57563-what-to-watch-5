@@ -10,15 +10,15 @@ Array [
       onClick={[Function]}
     >
       <TabsItem
-        activeTab="Tab default"
+        activeTab="overview"
         tab="overview"
       />
       <TabsItem
-        activeTab="Tab default"
+        activeTab="overview"
         tab="details"
       />
       <TabsItem
-        activeTab="Tab default"
+        activeTab="overview"
         tab="Reviews"
       />
     </ul>
@@ -65,20 +65,20 @@ Array [
       onClick={[Function]}
     >
       <TabsItem
-        activeTab="details"
+        activeTab="overview"
         tab="overview"
       />
       <TabsItem
-        activeTab="details"
+        activeTab="overview"
         tab="details"
       />
       <TabsItem
-        activeTab="details"
+        activeTab="overview"
         tab="Reviews"
       />
     </ul>
   </nav>,
-  <MovieDetails
+  <MovieOverview
     film={
       Object {
         "backgroundColor": "#ffffff",
@@ -120,43 +120,46 @@ Array [
       onClick={[Function]}
     >
       <TabsItem
-        activeTab="Reviews"
+        activeTab="overview"
         tab="overview"
       />
       <TabsItem
-        activeTab="Reviews"
+        activeTab="overview"
         tab="details"
       />
       <TabsItem
-        activeTab="Reviews"
+        activeTab="overview"
         tab="Reviews"
       />
     </ul>
   </nav>,
-  <MovieReviews
-    reviews={
-      Array [
-        Object {
-          "comment": "Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.",
-          "date": "2019-05-08T14:13:56.569Z",
-          "id": 1,
-          "rating": 8.9,
-          "user": Object {
-            "id": 4,
-            "name": "Kate Muir",
-          },
-        },
-        Object {
-          "comment": "The mannered, madcap proceedings are often delightful, occasionally silly, and here and there, gruesome and/or heartbreaking.",
-          "date": "2019-08-08T17:40:56.569Z",
-          "id": 2,
-          "rating": 9.1,
-          "user": Object {
-            "id": 5,
-            "name": "Paula Fleri-Soler",
-          },
-        },
-      ]
+  <MovieOverview
+    film={
+      Object {
+        "backgroundColor": "#ffffff",
+        "backgroundImage": "bg-the-grand-budapest-hotel.jpg",
+        "description": "In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.
+  Gustave prides himself on providing first-class service to the hotel's guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave's lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.",
+        "director": "Wes Andreson",
+        "genre": "Comedy",
+        "id": 1,
+        "isFavorite": true,
+        "name": "The Grand Budapest Hotel",
+        "posterImage": "the-grand-budapest-hotel-poster.jpg",
+        "previewImage": "bg-the-grand-budapest-hotel.jpg",
+        "previewVideoLink": "https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4",
+        "rating": 8.9,
+        "released": 2014,
+        "runTime": 99,
+        "scoresCount": 240,
+        "starring": Array [
+          "Bill Murray",
+          "Edward Norton",
+          "Jude Law",
+          "Willem Dafoe",
+          "Saoirse Ronan",
+        ],
+      }
     }
   />,
 ]

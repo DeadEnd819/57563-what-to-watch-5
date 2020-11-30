@@ -1,4 +1,4 @@
-import React, {Fragment} from "react";
+import React, {Fragment, useState, useCallback} from "react";
 import PropTypes from "prop-types";
 import MovieOverview from "../movie-overview/movie-overview";
 import MovieDetails from "../movie-details/movie-details";
@@ -7,7 +7,21 @@ import TabsItem from "../tabs-item/tabs-item";
 import {TabNames} from "../../const";
 import {FilmScreenType, ReviewType} from "../../prop-types/prop-types";
 
-const Tabs = ({film, reviews, activeTab, onTabClick}) => {
+const Tabs = ({film, reviews}) => {
+  const [activeTab, setActiveTab] = useState(TabNames.OVERVIEW);
+
+  const handleTabClick = useCallback(
+      (evt) => {
+        evt.preventDefault();
+
+        if (!evt.target.id) {
+          return;
+        }
+
+        setActiveTab(evt.target.id);
+      }, []
+  );
+
   const getTabComponent = () => {
     switch (activeTab) {
       case TabNames.DETAILS:
@@ -22,7 +36,7 @@ const Tabs = ({film, reviews, activeTab, onTabClick}) => {
   return (
     <Fragment>
       <nav className="movie-nav movie-card__nav">
-        <ul className="movie-nav__list" onClick={onTabClick}>
+        <ul className="movie-nav__list" onClick={handleTabClick}>
           {Object.values(TabNames).map((tab, i) =>
             <TabsItem key={`${i}-${tab}`} tab={tab} activeTab={activeTab} />
           )}
@@ -35,10 +49,8 @@ const Tabs = ({film, reviews, activeTab, onTabClick}) => {
 };
 
 Tabs.propTypes = {
-  activeTab: PropTypes.string.isRequired,
   film: FilmScreenType.isRequired,
   reviews: PropTypes.arrayOf(ReviewType).isRequired,
-  onTabClick: PropTypes.func.isRequired,
 };
 
 export default Tabs;
