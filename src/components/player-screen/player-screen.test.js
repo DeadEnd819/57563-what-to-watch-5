@@ -4,6 +4,7 @@ import {PlayerScreen} from "./player-screen";
 import {film} from "../../testMocks";
 
 jest.mock(`../player-button/player-button.jsx`, () => `PlayerButton`);
+jest.mock(`../full-screen-button/full-screen-button.jsx`, () => `FullScreenButton`);
 
 const renderer = new ShallowRenderer();
 const noop = ()=>{};

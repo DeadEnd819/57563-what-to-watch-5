@@ -4,6 +4,7 @@ import {FilmCardType} from "../../prop-types/prop-types";
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 import PlayerButton from "../player-button/player-button";
+import FullScreenButton from "../full-screen-button/full-screen-button";
 import {fetchCurrentFilm} from "../../store/api-actions";
 import {getCurrentFilm} from "../../store/selectors";
 import {getVideoDuration, getToggleProgress, extend} from "../../utils";
@@ -95,12 +96,7 @@ const PlayerScreen = ({id, film, loadDataFilm}) => {
           <PlayerButton isPlaying={isPlaying} onTogglePlayButtonClick={handleTogglePlayButtonClick}/>
           <div className="player__name">{name}</div>
 
-          <button type="button" className="player__full-screen" onClick={handleFullScreenButtonClick}>
-            <svg viewBox="0 0 27 27" width="27" height="27">
-              <use xlinkHref="#full-screen" />
-            </svg>
-            <span>Full screen</span>
-          </button>
+          <FullScreenButton onFullScreenButtonClick={handleFullScreenButtonClick} />
         </div>
       </div>
     </div>
