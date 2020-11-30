@@ -11,11 +11,17 @@ import {getGenre, getGenres, getFilmsCount, getFilteredFilms} from "../../store/
 const MemoMovieGenresList = memo(MovieGenresList);
 
 const MovieCatalog = ({genresList, filteredFilms, genre, showFilmsCount, changeGenreAction, showMoreCards}) => {
+  const handleButtonClick = (evt) => {
+    evt.preventDefault();
+    const currentGenre = evt.target.textContent;
+    changeGenreAction(currentGenre);
+  };
+
   return (
     <section className="catalog">
       <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-      <MemoMovieGenresList genresList={genresList} activeGenre={genre} onGenreClick={changeGenreAction} />
+      <MemoMovieGenresList genresList={genresList} activeGenre={genre} onGenreClick={handleButtonClick} />
 
       <MovieList films={filteredFilms} showCount={showFilmsCount} />
 

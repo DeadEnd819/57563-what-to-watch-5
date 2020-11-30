@@ -94,7 +94,7 @@ export const defaultFilm = {
   posterImage: ``,
   previewImage: ``,
   backgroundImage: ``,
-  backgroundColor: `#000000`,
+  backgroundColor: ``,
   previewVideoLink: ``,
   description: ``,
   rating: 0,
@@ -102,7 +102,7 @@ export const defaultFilm = {
   director: ``,
   starring: [``],
   runTime: 0,
-  genre: `Comedy`,
+  genre: ``,
   released: 0,
   isFavorite: false,
 };
@@ -110,7 +110,7 @@ export const defaultFilm = {
 export const defaultReview = {
   id: 1,
   user: {
-    id: 19,
+    id: 1,
     name: ``,
   },
   rating: 1,

@@ -9,10 +9,8 @@ import {PromoTypes} from "../../prop-types/prop-types";
 import {resetFilter} from "../../store/action";
 import {isUserLoggedIn} from "../../store/selectors";
 
-const MainScreen = ({promoFilm, resetFilterAction, isUserLogged}) => {
+const MainScreen = ({promoFilm, isUserLogged}) => {
   const {name, backgroundImage, posterImage} = promoFilm;
-
-  resetFilterAction();
 
   return <Fragment>
     <section className="movie-card">
@@ -47,7 +45,6 @@ const MainScreen = ({promoFilm, resetFilterAction, isUserLogged}) => {
 
 MainScreen.propTypes = {
   promoFilm: PromoTypes.isRequired,
-  resetFilterAction: PropTypes.func.isRequired,
   isUserLogged: PropTypes.bool.isRequired,
 };
 
