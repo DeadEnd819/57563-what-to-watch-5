@@ -152,7 +152,7 @@ describe(`Async operation work correctly`, () => {
     const favoritesSender = updateFavoriteFilm(1, 1);
 
     apiMock
-      .onPost(`${FAVORITE}/${1}/${fakeStatus}`)
+      .onPost(`${FAVORITE}/${1}/${1}`)
       .reply(200, {fake: true});
 
     return favoritesSender(dispatch, ()=>{}, api)
