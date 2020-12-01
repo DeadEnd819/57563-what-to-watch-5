@@ -32,6 +32,16 @@ export const adaptFilmToClient = (film) => {
   return adaptedFilm;
 };
 
+export const checksMailAndPassword = (email, password) => {
+  const regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_\`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+  if (!email && !password && !regex.test(email)) {
+    return false;
+  }
+
+  return true;
+};
+
 export const getRatingQuality = (rating) => {
   switch (true) {
     case (rating < 3):

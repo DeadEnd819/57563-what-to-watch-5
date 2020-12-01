@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should PlayerScreen render correctly 1`] = `
+<div
+  className="player"
+>
+  <video
+    className="player__video"
+    poster="bg-the-grand-budapest-hotel.jpg"
+  />
+  <Link
+    className="player__exit"
+    to="/films/1"
+    type="button"
+  >
+    Exit
+  </Link>
+  <div
+    className="player__controls"
+  >
+    <div
+      className="player__controls-row"
+    >
+      <div
+        className="player__time"
+      >
+        <progress
+          className="player__progress"
+          max={0}
+          value={0}
+        />
+        <div
+          className="player__toggler"
+          style={
+            Object {
+              "left": "0%",
+            }
+          }
+        >
+          Toggler
+        </div>
+      </div>
+      <div
+        className="player__time-value"
+      >
+        0:00
+      </div>
+    </div>
+    <div
+      className="player__controls-row"
+    >
+      <PlayerButton
+        isPlaying={true}
+        onTogglePlayButtonClick={[Function]}
+      />
+      <div
+        className="player__name"
+      >
+        The Grand Budapest Hotel
+      </div>
+      <FullScreenButton
+        onFullScreenButtonClick={[Function]}
+      />
+    </div>
+  </div>
+</div>
+`;

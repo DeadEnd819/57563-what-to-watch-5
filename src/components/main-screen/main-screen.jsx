@@ -6,12 +6,10 @@ import Footer from "../footer/footer";
 import MovieMenu from "../movie-menu/movie-menu";
 import MovieCatalog from "../movie-catalog/movie-catalog";
 import {PromoTypes} from "../../prop-types/prop-types";
-import {resetFilter} from "../../store/action";
+import {isUserLoggedIn} from "../../store/selectors";
 
-const MainScreen = ({promoFilm, resetFilterAction}) => {
+const MainScreen = ({promoFilm, isUserLogged}) => {
   const {name, backgroundImage, posterImage} = promoFilm;
-
-  resetFilterAction();
 
   return <Fragment>
     <section className="movie-card">
@@ -29,7 +27,7 @@ const MainScreen = ({promoFilm, resetFilterAction}) => {
             <img src={posterImage} alt={`${name} poster`} width="218" height="327"/>
           </div>
 
-          <MovieMenu film={promoFilm} />
+          <MovieMenu film={promoFilm} isMain={true} isUserLogged={isUserLogged}/>
         </div>
       </div>
     </section>
@@ -46,19 +44,14 @@ const MainScreen = ({promoFilm, resetFilterAction}) => {
 
 MainScreen.propTypes = {
   promoFilm: PromoTypes.isRequired,
-  resetFilterAction: PropTypes.func.isRequired,
+  isUserLogged: PropTypes.bool.isRequired,
 };
 
-const mapStateToProps = ({DATA}) => ({
-  promoFilm: DATA.promo,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  resetFilterAction() {
-    dispatch(resetFilter());
-  }
+const mapStateToProps = (state) => ({
+  promoFilm: state.DATA.promo,
+  isUserLogged: isUserLoggedIn(state),
 });
 
 export {MainScreen};
-export default connect(mapStateToProps, mapDispatchToProps)(MainScreen);
+export default connect(mapStateToProps)(MainScreen);
 

@@ -27,6 +27,13 @@ export const FilmCardType = shape({
   isFavorite: bool.isRequired,
 });
 
+export const MovieScreenType = shape({
+  name: string.isRequired,
+  posterImage: string.isRequired,
+  backgroundImage: string.isRequired,
+  backgroundColor: string.isRequired,
+});
+
 export const FilmScreenType = shape({
   id: number.isRequired,
   name: string.isRequired,

@@ -33,6 +33,7 @@ exports[`Should AuthScreen render correctly 1`] = `
             id="user-email"
             name="user-email"
             placeholder="Email address"
+            required={true}
             type="email"
           />
           <label
@@ -50,6 +51,7 @@ exports[`Should AuthScreen render correctly 1`] = `
             id="user-password"
             name="user-password"
             placeholder="Password"
+            required={true}
             type="password"
           />
           <label

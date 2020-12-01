@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should MovieDetails render correctly 1`] = `
+<div
+  className="movie-card__text movie-card__row"
+>
+  <div
+    className="movie-card__text-col"
+  >
+    <MovieDetailsItem
+      name="Director"
+      value="Wes Andreson"
+    />
+    <MovieDetailsItem
+      name="Starring"
+      value={
+        <React.Fragment>
+          <React.Fragment>
+            Bill Murray,
+             
+            <br />
+          </React.Fragment>
+          <React.Fragment>
+            Edward Norton,
+             
+            <br />
+          </React.Fragment>
+          <React.Fragment>
+            Jude Law,
+             
+            <br />
+          </React.Fragment>
+          <React.Fragment>
+            Willem Dafoe,
+             
+            <br />
+          </React.Fragment>
+          <React.Fragment>
+            Saoirse Ronan,
+             
+            <br />
+          </React.Fragment>
+        </React.Fragment>
+      }
+    />
+  </div>
+  <div
+    className="movie-card__text-col"
+  >
+    <MovieDetailsItem
+      name="Run Time"
+      value="1h 39m"
+    />
+    <MovieDetailsItem
+      name="Genre"
+      value="Comedy"
+    />
+    <MovieDetailsItem
+      name="Released"
+      value={2014}
+    />
+  </div>
+</div>
+`;

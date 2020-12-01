@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should VideoPlayer render correctly 1`] = `
+<video
+  height="175"
+  muted="muted"
+  poster="bg-the-grand-budapest-hotel.jpg"
+  width="280"
+>
+  <source
+    src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+  />
+</video>
+`;

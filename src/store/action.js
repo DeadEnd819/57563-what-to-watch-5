@@ -3,7 +3,6 @@ import {SHOW_MOVIE_COUNT, ActionType} from "../const";
 const {
   CHANGE_GENRE,
   INCREMENT_SHOW_FILMS_COUNT,
-  RESET_FILMS_FILTER,
   LOAD_FILMS,
   LOAD_CURRENT_FILM,
   LOAD_PROMO_FILM,
@@ -22,10 +21,6 @@ export const changeGenre = (genre) => ({
 export const incrementShowFilmsCount = () => ({
   type: INCREMENT_SHOW_FILMS_COUNT,
   payload: SHOW_MOVIE_COUNT,
-});
-
-export const resetFilter = () => ({
-  type: RESET_FILMS_FILTER,
 });
 
 export const loadFilms = (data) => ({

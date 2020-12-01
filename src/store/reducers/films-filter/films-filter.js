@@ -4,7 +4,6 @@ import {GenresNames, ActionType, SHOW_MOVIE_COUNT} from "../../../const";
 const {
   CHANGE_GENRE,
   INCREMENT_SHOW_FILMS_COUNT,
-  RESET_FILMS_FILTER,
 } = ActionType;
 
 const initialState = {
@@ -22,11 +21,6 @@ const filmsFilter = (state = initialState, action) => {
     case INCREMENT_SHOW_FILMS_COUNT:
       return extend(state, {
         showFilmsCount: state.showFilmsCount + action.payload,
-      });
-    case RESET_FILMS_FILTER:
-      return extend(state, {
-        genre: GenresNames.ALL_GENRES,
-        showFilmsCount: SHOW_MOVIE_COUNT,
       });
   }
 

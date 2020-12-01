@@ -40,9 +40,9 @@ Array [
         <MovieMenu
           film={
             Object {
-              "backgroundColor": "#000000",
+              "backgroundColor": "#ffffff",
               "backgroundImage": "bg-the-grand-budapest-hotel.jpg",
-              "genre": "Drama",
+              "genre": "Comedy",
               "id": 1,
               "isFavorite": false,
               "name": "The Grand Budapest Hotel",
@@ -50,6 +50,8 @@ Array [
               "released": 2014,
             }
           }
+          isMain={true}
+          isUserLogged={true}
         />
       </div>
     </div>

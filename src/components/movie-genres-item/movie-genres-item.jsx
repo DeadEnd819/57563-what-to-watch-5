@@ -3,15 +3,9 @@ import PropTypes from "prop-types";
 
 
 const MovieGenresItem = ({genre, activeGenre, onGenreClick}) => {
-  const onButtonClick = (evt) => {
-    evt.preventDefault();
-    const currentGenre = evt.target.textContent;
-    onGenreClick(currentGenre);
-  };
-
   return (
     <li className={`catalog__genres-item ${(genre === activeGenre) ? `catalog__genres-item--active` : ``}`}>
-      <a href="#" className="catalog__genres-link" onClick={onButtonClick}>
+      <a href="#" className="catalog__genres-link" onClick={onGenreClick}>
         {genre}
       </a>
     </li>

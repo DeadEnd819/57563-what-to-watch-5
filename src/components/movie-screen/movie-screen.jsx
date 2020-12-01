@@ -6,13 +6,12 @@ import Footer from "../footer/footer";
 import MovieMenu from "../movie-menu/movie-menu";
 import MovieList from "../movie-list/movie-list";
 import Tabs from "../tabs/tabs";
-import withTabs from "../../hocs/with-tabs";
-import {FilmCardType, FilmScreenType, ReviewType} from "../../prop-types/prop-types";
+import {FilmCardType, MovieScreenType, ReviewType} from "../../prop-types/prop-types";
 import {MORE_MOVIE_COUNT} from "../../const";
 import {fetchCurrentFilm, fetchReviews} from "../../store/api-actions";
 import {getSimilarFilms, getCurrentFilm, getReviews, isUserLoggedIn} from "../../store/selectors";
 
-const MemoTabsWrapped = memo(withTabs(Tabs));
+const MemoTabsWrapped = memo(Tabs);
 
 const MovieScreen = ({currentFilm, loadDataFilm, id, similarFilms, reviews, isUserLogged}) => {
   useEffect(() => {
@@ -69,8 +68,8 @@ const MovieScreen = ({currentFilm, loadDataFilm, id, similarFilms, reviews, isUs
 
 MovieScreen.propTypes = {
   id: PropTypes.string.isRequired,
-  currentFilm: PropTypes.oneOfType([FilmScreenType.isRequired, () => null]),
-  similarFilms: PropTypes.oneOfType([PropTypes.arrayOf(FilmCardType), () => null]),
+  currentFilm: MovieScreenType.isRequired,
+  similarFilms: PropTypes.arrayOf(FilmCardType).isRequired,
   reviews: PropTypes.arrayOf(ReviewType).isRequired,
   loadDataFilm: PropTypes.func.isRequired,
   isUserLogged: PropTypes.bool.isRequired,

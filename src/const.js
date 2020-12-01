@@ -24,7 +24,6 @@ export const AuthorizationStatus = {
 export const ActionType = {
   CHANGE_GENRE: `CHANGE_GENRE`,
   INCREMENT_SHOW_FILMS_COUNT: `INCREMENT_SHOW_FILMS_COUNT`,
-  RESET_FILMS_FILTER: `RESET_FILMS_FILTER`,
   LOAD_FILMS: `LOAD_FILMS`,
   LOAD_PROMO_FILM: `LOAD_PROMO_FILM`,
   LOAD_CURRENT_FILM: `CHANGE_CURRENT_FILM`,
@@ -50,11 +49,11 @@ export const AppRoute = {
 };
 
 export const APIRoute = {
+  LOGIN: `/login`,
   FILMS: `/films`,
   PROMO: `/films/promo`,
-  FAVORITE: `/favorite`,
   COMMENTS: `/comments`,
-  LOGIN: `/login`,
+  FAVORITE: `/favorite`,
 };
 
 export const TabNames = {
@@ -87,3 +86,34 @@ export const ReviewLengths = {
   MIN: 50,
   MAX: 400,
 };
+
+export const defaultFilm = {
+  id: 1,
+  name: ``,
+  posterImage: ``,
+  previewImage: ``,
+  backgroundImage: ``,
+  backgroundColor: ``,
+  previewVideoLink: ``,
+  description: ``,
+  rating: 0,
+  scoresCount: 0,
+  director: ``,
+  starring: [``],
+  runTime: 0,
+  genre: ``,
+  released: 0,
+  isFavorite: false,
+};
+
+export const defaultReview = {
+  id: 1,
+  user: {
+    id: 1,
+    name: ``,
+  },
+  rating: 1,
+  comment: ``,
+  date: ``,
+};
+
