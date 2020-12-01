@@ -5,7 +5,7 @@ import {AppRoute} from "../../const";
 import PlayButton from "../play-button/play-button";
 import AddMyListButton from "../add-my-list-button/add-my-list-button";
 import PropTypes from "prop-types";
-import {fetchCurrentFilm, fetchReviews, updateFavoriteFilm} from "../../store/api-actions";
+import {fetchFilmsList, fetchCurrentFilm, fetchReviews, updateFavoriteFilm} from "../../store/api-actions";
 import {redirectToRoute} from "../../store/action";
 import {connect} from "react-redux";
 
@@ -58,6 +58,7 @@ const mapDispatchToProps = (dispatch) => ({
   loadDataFilm(id) {
     dispatch(fetchCurrentFilm(id));
     dispatch(fetchReviews(id));
+    dispatch(fetchFilmsList());
   },
   addToMyListAction(id, isFavorite) {
     dispatch(updateFavoriteFilm(id, isFavorite));
