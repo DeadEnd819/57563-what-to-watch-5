@@ -1,5 +1,4 @@
 import {APIRoute, AppRoute, HttpCode, AuthorizationStatus, ReviewStatus} from "../const";
-import {adaptFilmToClient} from "../utils";
 import {
   loadFilms,
   loadCurrentFilm,
