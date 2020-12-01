@@ -10,7 +10,7 @@ import rootReducer from "./store/reducers/root-reducer";
 import {requireAuthorization} from "./store/action";
 import {fetchFilmsList, fetchPromoFilm, checkAuthorization} from "./store/api-actions";
 import {AuthorizationStatus} from "./const";
-// import {adapter} from "./store/middlewares/adapter";
+import {adapter} from "./store/middlewares/adapter";
 import {redirect} from "./store/middlewares/redirect";
 
 const api = createAPI(
@@ -21,7 +21,7 @@ const store = createStore(
     rootReducer,
     composeWithDevTools(
         applyMiddleware(thunk.withExtraArgument(api)),
-        // applyMiddleware(adapter),
+        applyMiddleware(adapter),
         applyMiddleware(redirect)
     )
 );

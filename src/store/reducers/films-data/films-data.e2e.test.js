@@ -1,9 +1,8 @@
 import MockAdapter from "axios-mock-adapter";
 import {createAPI} from "../../../services/api";
 import {filmsData} from "./films-data";
-import {ActionType} from "../../../const";
+import {ActionType, APIRoute, defaultFilm, defaultReview} from "../../../const";
 import {fetchFilmsList, fetchCurrentFilm, fetchPromoFilm, fetchReviews, updateFavoriteFilm} from "../../api-actions";
-import {APIRoute} from "../../../const";
 import {films, promoFilm, reviews} from "../../../testMocks";
 import {extend} from "../../../utils";
 
@@ -15,10 +14,10 @@ const mockPromoFilm = promoFilm;
 const mockCurrentReviews = reviews;
 
 const mockInitialState = {
-  films: [],
-  promo: {},
-  currentFilm: null,
-  currentReviews: null,
+  films: [defaultFilm],
+  promo: defaultFilm,
+  currentFilm: defaultFilm,
+  currentReviews: [defaultReview],
 };
 
 const api = createAPI(()=>{});
