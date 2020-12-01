@@ -29,6 +29,8 @@ export const film = {
   isFavorite: true,
 };
 
+export const films = [film, film, film, film, film, film, film, film, film];
+
 export const reviewOne = {
   id: 1,
   user: {

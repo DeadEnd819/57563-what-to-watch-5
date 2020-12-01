@@ -12,7 +12,7 @@ it(`Should FullScreen button be pressed`, () => {
       <FullScreenButton onFullScreenButtonClick={handleFullScreenButtonClick} />
   );
 
-  const replayButton = wrapper.find(`button.player__full-screen`);
-  replayButton.simulate(`click`);
+  const fullScreenButton = wrapper.find(`button.player__full-screen`);
+  fullScreenButton.simulate(`click`);
   expect(handleFullScreenButtonClick).toHaveBeenCalledTimes(1);
 });

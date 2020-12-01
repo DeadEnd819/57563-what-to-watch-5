@@ -6,7 +6,6 @@ import Footer from "../footer/footer";
 import MovieMenu from "../movie-menu/movie-menu";
 import MovieCatalog from "../movie-catalog/movie-catalog";
 import {PromoTypes} from "../../prop-types/prop-types";
-import {resetFilter} from "../../store/action";
 import {isUserLoggedIn} from "../../store/selectors";
 
 const MainScreen = ({promoFilm, isUserLogged}) => {
@@ -53,12 +52,6 @@ const mapStateToProps = (state) => ({
   isUserLogged: isUserLoggedIn(state),
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  resetFilterAction() {
-    dispatch(resetFilter());
-  }
-});
-
 export {MainScreen};
-export default connect(mapStateToProps, mapDispatchToProps)(MainScreen);
+export default connect(mapStateToProps)(MainScreen);
 

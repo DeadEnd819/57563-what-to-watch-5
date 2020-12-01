@@ -1,4 +1,5 @@
 import {APIRoute, AppRoute, HttpCode, AuthorizationStatus, ReviewStatus} from "../const";
+import {adaptFilmToClient} from "../utils";
 import {
   loadFilms,
   loadCurrentFilm,
@@ -18,7 +19,7 @@ const {REVIEW_NOT_UPDATED} = ReviewStatus;
 
 export const fetchFilmsList = () => (dispatch, _getState, api) => (
   api.get(FILMS)
-    .then(({data}) => dispatch(loadFilms(data)))
+    .then(({data}) => dispatch(loadFilms(data.map(adaptFilmToClient))))
     .catch(() => {
       throw Error(`Ошибка загрузки списка фильмов`);
     })
@@ -26,7 +27,7 @@ export const fetchFilmsList = () => (dispatch, _getState, api) => (
 
 export const fetchCurrentFilm = (id) => (dispatch, _getState, api) => (
   api.get(`${FILMS}/${id}`)
-    .then(({data}) => dispatch(loadCurrentFilm(data)))
+    .then(({data}) => dispatch(loadCurrentFilm(adaptFilmToClient(data))))
     .catch((error) => {
       throw error;
     })
@@ -34,7 +35,7 @@ export const fetchCurrentFilm = (id) => (dispatch, _getState, api) => (
 
 export const fetchPromoFilm = () => (dispatch, _getState, api) => (
   api.get(PROMO)
-    .then(({data}) => dispatch(loadPromoFilm(data)))
+    .then(({data}) => dispatch(loadPromoFilm(adaptFilmToClient(data))))
     .catch(() => {
       throw Error(`Ошибка загрузки промо-фильма`);
     })

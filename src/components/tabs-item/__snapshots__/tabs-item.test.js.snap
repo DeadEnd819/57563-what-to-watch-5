@@ -8,6 +8,7 @@ exports[`Render TabsItem Should TabsItem active render correctly 1`] = `
     className="movie-nav__link"
     href="#"
     id="details"
+    onClick={[Function]}
   >
     Details
   </a>
@@ -22,6 +23,7 @@ exports[`Render TabsItem Should TabsItem render correctly 1`] = `
     className="movie-nav__link"
     href="#"
     id="details"
+    onClick={[Function]}
   >
     Details
   </a>

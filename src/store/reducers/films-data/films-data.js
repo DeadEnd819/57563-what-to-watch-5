@@ -1,13 +1,13 @@
 import {extend} from "../../../utils";
-import {ActionType, defaultFilm, defaultReview} from "../../../const";
+import {ActionType} from "../../../const";
 
 const {LOAD_FILMS, LOAD_CURRENT_FILM, LOAD_PROMO_FILM, LOAD_REVIEWS} = ActionType;
 
 const initialState = {
-  films: [defaultFilm],
-  promo: defaultFilm,
-  currentFilm: defaultFilm,
-  currentReviews: [defaultReview],
+  films: [],
+  promo: {},
+  currentFilm: null,
+  currentReviews: null,
 };
 
 const filmsData = (state = initialState, action) => {

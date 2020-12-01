@@ -31,7 +31,7 @@ const UserBlock = ({isUserLogged, avatarUrl}) => {
 
 UserBlock.propTypes = {
   isUserLogged: PropTypes.bool.isRequired,
-  avatarUrl: PropTypes.string.isRequired,
+  avatarUrl: PropTypes.string,
 };
 
 const mapStateToProps = (state) => ({

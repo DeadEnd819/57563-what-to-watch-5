@@ -36,9 +36,9 @@ const Tabs = ({film, reviews}) => {
   return (
     <Fragment>
       <nav className="movie-nav movie-card__nav">
-        <ul className="movie-nav__list" onClick={handleTabClick}>
+        <ul className="movie-nav__list" >
           {Object.values(TabNames).map((tab, i) =>
-            <TabsItem key={`${i}-${tab}`} tab={tab} activeTab={activeTab} />
+            <TabsItem key={`${i}-${tab}`} tab={tab} activeTab={activeTab} onTabClick={handleTabClick} />
           )}
         </ul>
       </nav>

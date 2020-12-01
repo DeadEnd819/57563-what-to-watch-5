@@ -7,18 +7,20 @@ Array [
   >
     <ul
       className="movie-nav__list"
-      onClick={[Function]}
     >
       <TabsItem
         activeTab="overview"
+        onTabClick={[Function]}
         tab="overview"
       />
       <TabsItem
         activeTab="overview"
+        onTabClick={[Function]}
         tab="details"
       />
       <TabsItem
         activeTab="overview"
+        onTabClick={[Function]}
         tab="Reviews"
       />
     </ul>
@@ -62,18 +64,20 @@ Array [
   >
     <ul
       className="movie-nav__list"
-      onClick={[Function]}
     >
       <TabsItem
         activeTab="overview"
+        onTabClick={[Function]}
         tab="overview"
       />
       <TabsItem
         activeTab="overview"
+        onTabClick={[Function]}
         tab="details"
       />
       <TabsItem
         activeTab="overview"
+        onTabClick={[Function]}
         tab="Reviews"
       />
     </ul>
@@ -117,18 +121,20 @@ Array [
   >
     <ul
       className="movie-nav__list"
-      onClick={[Function]}
     >
       <TabsItem
         activeTab="overview"
+        onTabClick={[Function]}
         tab="overview"
       />
       <TabsItem
         activeTab="overview"
+        onTabClick={[Function]}
         tab="details"
       />
       <TabsItem
         activeTab="overview"
+        onTabClick={[Function]}
         tab="Reviews"
       />
     </ul>

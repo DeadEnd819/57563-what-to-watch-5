@@ -24,7 +24,6 @@ export const AuthorizationStatus = {
 export const ActionType = {
   CHANGE_GENRE: `CHANGE_GENRE`,
   INCREMENT_SHOW_FILMS_COUNT: `INCREMENT_SHOW_FILMS_COUNT`,
-  RESET_FILMS_FILTER: `RESET_FILMS_FILTER`,
   LOAD_FILMS: `LOAD_FILMS`,
   LOAD_PROMO_FILM: `LOAD_PROMO_FILM`,
   LOAD_CURRENT_FILM: `CHANGE_CURRENT_FILM`,
@@ -50,11 +49,11 @@ export const AppRoute = {
 };
 
 export const APIRoute = {
+  LOGIN: `/login`,
   FILMS: `/films`,
   PROMO: `/films/promo`,
-  FAVORITE: `/favorite`,
   COMMENTS: `/comments`,
-  LOGIN: `/login`,
+  FAVORITE: `/favorite`,
 };
 
 export const TabNames = {

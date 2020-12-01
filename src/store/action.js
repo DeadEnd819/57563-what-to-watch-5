@@ -24,10 +24,6 @@ export const incrementShowFilmsCount = () => ({
   payload: SHOW_MOVIE_COUNT,
 });
 
-export const resetFilter = () => ({
-  type: RESET_FILMS_FILTER,
-});
-
 export const loadFilms = (data) => ({
   type: LOAD_FILMS,
   payload: data,
